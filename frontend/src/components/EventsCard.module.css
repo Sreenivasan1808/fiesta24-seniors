@@ -1,0 +1,8 @@
+.overlay {
+  color: rgb(240,240,240);
+  font-size: 1.2rem;
+  border-radius: 2xl;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.307);
+  border-radius: 1rem;
+}

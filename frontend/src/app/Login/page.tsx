@@ -2,17 +2,14 @@
 import React from "react";
 
 import { Button, TextField } from "@mui/material";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const LoginPage = () => {
   return (
     <>
-      <Navbar></Navbar>
+
       <div className="flex justify-center items-center min-h-screen">
-        <div className="bg-slate-200 rounded-lg">
+        <div style={{background: "#fafafa"}} className="rounded-xl" >
           <form className="flex flex-col justify-center p-3 min-h-96 min-w-80">
             <h2 className="text-emerald-950 text-center text-3xl mb-5">
               Login
@@ -25,6 +22,7 @@ const LoginPage = () => {
               id="adminNo"
               label="Admission Number"
               variant="outlined"
+              color="success"
               sx={{ marginTop: "2em" }}
             />
             {/* <label htmlFor="pass" className="mt-3 mx-2 text-gray-800">
@@ -36,6 +34,7 @@ const LoginPage = () => {
               label="Password"
               type="password"
               autoComplete="current-password"
+              color="success"
               sx={{ marginTop: "1em" }}
             />
             <div className="flex justify-center mt-4 my-1">
@@ -43,6 +42,7 @@ const LoginPage = () => {
                 sx={{ borderRadius: "25px", minWidth: "6rem" }}
                 variant="contained"
                 type="submit"
+                color="success"
                 component={motion.button}
                 whileTap={{ scale: 0.85 }}
               >
@@ -55,6 +55,7 @@ const LoginPage = () => {
                 variant="outlined"
                 href="/Register"
                 type="button"
+                color="success"
                 component={motion.button}
                 whileTap={{ scale: 0.85 }}
               >
@@ -70,7 +71,7 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
-      <Footer></Footer>
+
     </>
   );
 };
