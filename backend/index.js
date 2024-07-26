@@ -2,8 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const bodyParser = require('body-parser')
-
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -18,7 +17,9 @@ mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
+app.get("/",(req,res)=>{
+  res.send("hello")
+})
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
@@ -27,3 +28,6 @@ db.once("open", () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
 });
+
+const userRouter = require("./routes/userRoutes");
+app.use("/userRoutes", userRouter);
