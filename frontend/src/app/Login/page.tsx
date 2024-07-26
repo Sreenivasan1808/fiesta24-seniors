@@ -1,15 +1,59 @@
 "use client";
-import React from "react";
-
-import { Button, TextField } from "@mui/material";
+import React, { useState } from "react";
+import axios from "axios";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const LoginPage = () => {
+  const [rollNo, setRollNo] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [rollNoError, setRollNoError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const router = useRouter();
+
+  const validateForm = () => {
+    let isValid = true;
+    if (!rollNo || rollNo.trim().length == 0) {
+      setRollNoError("Please enter your roll no");
+      isValid = false;
+    }
+    if (!password || password.trim().length == 0) {
+      setPasswordError("Please enter your password");
+      isValid = false;
+    }
+    return isValid;
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const isValid = validateForm();
+    const formData = { rollNo: rollNo, password: password };
+
+    if (isValid == true) {
+      const response = await axios.post(``, formData);
+      if (response.status == 200) {
+        router.push("/");
+        localStorage.setItem("AccessToken", response.data.accessToken);
+      } else {
+        alert("Something went wrong");
+      }
+    }
+  };
+
   return (
     <>
-
       <div className="flex justify-center items-center min-h-screen">
-        <div style={{background: "#fafafa"}} className="rounded-xl" >
+        <div style={{ background: "#f5f5f5" }} className="rounded-xl shadow-xl">
           <form className="flex flex-col justify-center p-3 min-h-96 min-w-80">
             <h2 className="text-emerald-950 text-center text-3xl mb-5">
               Login
@@ -19,11 +63,17 @@ const LoginPage = () => {
             </label> */}
             <TextField
               required
-              id="adminNo"
-              label="Admission Number"
+              id="rollNo"
+              label="Roll Number"
               variant="outlined"
               color="success"
+              onChange={(e) => {
+                setRollNo(e.target.value);
+                setRollNoError("");
+              }}
               sx={{ marginTop: "2em" }}
+              error={rollNoError.length > 0}
+              helperText={rollNoError}
             />
             {/* <label htmlFor="pass" className="mt-3 mx-2 text-gray-800">
               Password
@@ -32,10 +82,29 @@ const LoginPage = () => {
               id="pass"
               required
               label="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               autoComplete="current-password"
               color="success"
               sx={{ marginTop: "1em" }}
+              error={passwordError.length > 0}
+              helperText={passwordError}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError("");
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="Toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <div className="flex justify-center mt-4 my-1">
               <Button
@@ -49,7 +118,7 @@ const LoginPage = () => {
                 Login
               </Button>
             </div>
-            <div className="flex justify-center my-1">
+            <div className="flex justify-center my-2">
               <Button
                 sx={{ borderRadius: "25px", minWidth: "6rem" }}
                 variant="outlined"
@@ -58,6 +127,7 @@ const LoginPage = () => {
                 color="success"
                 component={motion.button}
                 whileTap={{ scale: 0.85 }}
+                onClick={() => router.push("/Register")}
               >
                 Signup
               </Button>
@@ -71,7 +141,6 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
-
     </>
   );
 };

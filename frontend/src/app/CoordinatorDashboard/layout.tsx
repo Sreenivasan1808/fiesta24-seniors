@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+
 export default function Layout({ children }: any) {
   const menuItems = [
     {
@@ -17,14 +18,14 @@ export default function Layout({ children }: any) {
   ];
   return (
     <div className="min-h-screen flex justify-between items-start">
-      <aside className="md:w-60 border border-gray-800  h-screen bg-gray-100" style={{width: "20%"}}>
+      <aside className="md:w-60 border border-gray-800  h-screen bg-green-100" style={{width: "20%", minWidth:"15%"}}>
         <nav>
           <ul>
             {menuItems.map(({ href, title }) => (
               <li className="m-2" key={title}>
                 <Link
                   href={href}
-                  className={`flex p-2  rounded cursor-pointer hover:bg-gray-300`}
+                  className={`flex p-2  rounded cursor-pointer hover:bg-green-300`}
                 >
                   {title}
                 </Link>
@@ -33,7 +34,7 @@ export default function Layout({ children }: any) {
           </ul>
         </nav>
       </aside>
-      <div  style={{ width: "80s%" }}>
+      <div  style={{ width: "80%" }}>
 
       {children}
       </div>

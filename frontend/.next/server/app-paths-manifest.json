@@ -1,6 +1,4 @@
 {
-  "/Register/page": "app/Register/page.js",
-  "/page": "app/page.js",
   "/CoordinatorDashboard/page": "app/CoordinatorDashboard/page.js",
   "/CoordinatorDashboard/AddParticipant/page": "app/CoordinatorDashboard/AddParticipant/page.js",
   "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js"

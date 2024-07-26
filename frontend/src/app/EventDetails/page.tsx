@@ -90,6 +90,7 @@ const EventDetails = () => {
             />
           </div>
           <div className="min-w-64 max-w-md">
+            <p className="text-center text-lg">Rules</p>
             <ul className="list-disc text-wrap text-lg">{renderTemplate}</ul>
           </div>
         </div>
