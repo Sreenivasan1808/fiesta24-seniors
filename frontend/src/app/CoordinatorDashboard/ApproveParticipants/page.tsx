@@ -1,27 +1,32 @@
-"use client"
-import { Button } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+"use client";
+import { Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ClearIcon from "@mui/icons-material/Clear";
+import DoneIcon from "@mui/icons-material/Done";
 
 const ApproveParticipants = () => {
-
-  const [pendingParticipants, setPendingParticipants] = useState([]);
+  const [pendingParticipants, setPendingParticipants] = useState([1,2,3,4]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("");
-      if(response.status == 200){
+      if (response.status == 200) {
         setPendingParticipants(response.data);
-      }else{
+      } else {
         alert("Error fetching data");
         console.log(response.data);
       }
-    }
-    fetchData();
-  }, [])
+    };
+    // fetchData();
+  }, []);
 
-  if(!pendingParticipants || pendingParticipants.length == 0){
-    return <h1>No participants to approve</h1>
+  const handleApproval = (e:any) => {};
+
+  const handleRejection = (e:any) => {};
+
+  if (!pendingParticipants || pendingParticipants.length == 0) {
+    return <h1>No participants to approve</h1>;
   }
 
   return (
@@ -51,46 +56,47 @@ const ApproveParticipants = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {pendingParticipants.map((p) => {return <h1>hi</h1>})} */}
-            <tr className="bg-white border-2 hover:border-green-300 ">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-              >
-                Apple MacBook Pro 17"
-              </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4">Laptop</td>
-              <td className="px-6 py-4">$2999</td>
-              <td><Button>Approve</Button> <Button>Reject</Button></td>
-            </tr>
-            <tr className="bg-white border-b ">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Microsoft Surface Pro
-              </th>
-              <td className="px-6 py-4">White</td>
-              <td className="px-6 py-4">Laptop PC</td>
-              <td className="px-6 py-4">$1999</td>
-            </tr>
-            <tr className="bg-white">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Magic Mouse 2
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$99</td>
-            </tr>
+            {pendingParticipants &&
+              pendingParticipants.map &&
+              pendingParticipants.map((item, index) => {
+                return (
+                <tr className="bg-white border-2 hover:border-green-300 ">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                  >
+                    Apple MacBook Pro 17"
+                  </th>
+                  <td className="px-6 py-4">Silver</td>
+                  <td className="px-6 py-4">Laptop</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td>
+                    <Button
+                      color="success"
+                      variant="outlined"
+                      onClick={() => handleApproval(this)}
+                      className="mx-0.5"
+                    >
+                      <DoneIcon />
+                    </Button>{" "}
+                    <Button
+                      color="error"
+                      variant="outlined"
+                      onClick={() => handleRejection(this)}
+                      className="mx-0.5"
+                    >
+                      <ClearIcon />
+                    </Button>
+                  </td>
+                </tr>)
+              })}
+
+            
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ApproveParticipants
+export default ApproveParticipants;
