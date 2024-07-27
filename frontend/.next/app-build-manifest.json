@@ -12,16 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/EventDetails/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/EventDetails/page.js"
-    ],
-    "/Login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Login/page.js"
-    ],
     "/Register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -37,15 +27,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/CoordinatorDashboard/layout.js"
     ],
-    "/CoordinatorDashboard/AddParticipant/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/CoordinatorDashboard/AddParticipant/page.js"
-    ],
     "/CoordinatorDashboard/ApproveParticipants/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/CoordinatorDashboard/ApproveParticipants/page.js"
+    ],
+    "/CoordinatorDashboard/AddParticipant/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/CoordinatorDashboard/AddParticipant/page.js"
     ]
   }
 }

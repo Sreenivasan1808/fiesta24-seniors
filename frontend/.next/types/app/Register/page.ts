@@ -1,4 +1,4 @@
-// File: D:\Projects\Fiesta\Fiesta24_Seniors\frontend\src\app\Register\page.tsx
+// File: D:\web\fiesta24-seniors\frontend\src\app\Register\page.tsx
 import * as entry from '../../../../src/app/Register/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
