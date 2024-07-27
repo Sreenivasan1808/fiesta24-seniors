@@ -7,7 +7,7 @@ dotenv.config();
 const accept = async (req, res) => {
   try {
     const participantMail = req.body.mail;
-
+    console.log(participantMail);
     // Update the user's status to "approved"
     const result = await studentModel.findOne({ mail: participantMail });
     const update = await userModel.updateOne(
@@ -15,6 +15,7 @@ const accept = async (req, res) => {
       { $set: { status: "approved" } }
     );
     console.log(result._id);
+    console.log(update);
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "User not found" });
@@ -35,6 +36,7 @@ const accept = async (req, res) => {
 const reject = async (req, res) => {
   try {
     const participantMail = req.body.mail;
+    console.log(participantMail)
     const result = await studentModel.findOne({ mail: participantMail });
     // Update the user's status to "rejected"
     const update = await userModel.updateOne(
@@ -101,8 +103,33 @@ const acceptall = async (req, res) => {
   }
 };
 
+const dashboard = async (req, res) => {
+  const details = await userModel.find({ status: "pending" });
+
+  if (!details || details.length == 0) {
+    res.status(204).end();
+    return;
+  }
+
+  let arr = [];
+  for (let i = 0; i < details.length; i++) {
+    // console.log(details[i].detail)
+
+    //replace with API call provided by Sir
+    const data = await studentModel.findOne({ _id: details[i].detail });
+    arr.push(data);
+  }
+  console.log(arr);
+  if (arr.length == 0) {
+    res.status(204).end();
+  } else {
+    res.status(200).json(arr);
+  }
+};
+
 module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
+  Dashboard: dashboard,
 };

@@ -12,6 +12,7 @@ const send_mail = (participantMail, message) => {
       user: process.env.SMTP_USER, // SMTP user
       pass: process.env.SMTP_PASS  // SMTP password
     },
+    
     connectionTimeout: 10000, // 10 seconds timeout
     socketTimeout: 10000 // 10 seconds timeout
   });
@@ -27,7 +28,7 @@ const send_mail = (participantMail, message) => {
   // Send email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return console.log("Mail error: ",error);
     }
     console.log('Message sent: %s', info.messageId);
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));

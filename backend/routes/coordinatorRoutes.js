@@ -5,5 +5,6 @@ const coordinatorController = require('../contollers/coordinatorController'); //
 router.post("/accept", coordinatorController.Accept);
 router.post("/acceptall", coordinatorController.Acceptall);
 router.post("/reject", coordinatorController.Reject);
+router.get("/dashboard",coordinatorController.Dashboard)
 
 module.exports = router;
