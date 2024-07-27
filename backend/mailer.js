@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
-
+//const send_mail = (participantMail,message) => {
 // Create a transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -10,15 +10,17 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.SMTP_USER, // SMTP user
     pass: process.env.SMTP_PASS  // SMTP password
-  }
+  },
+  connectionTimeout: 100000, // 10 seconds timeout
+  socketTimeout: 100000 // 10 seconds timeout
 });
-const send_mail = () => {
+
 // Define email options
 const mailOptions = {
   from: process.env.SMTP_USER, // sender address
-  to: 'sreenivasan1808@gmail.com', // list of receivers
-  subject: 'Hello ✔', // Subject line
-  text: 'Your mail has been approved' // plain text body
+  to: 'sarathyj121@gmail.com', // list of receivers
+  subject: 'Fiesta\'24 Seniors', // Subject line
+  text: 'hi' // plain text body
   
 };
 
@@ -31,5 +33,6 @@ transporter.sendMail(mailOptions, (error, info) => {
   console.log('Message sent: %s', info.messageId);
   console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 });
-}
-export default send_mail
+//}
+//send_mail('sarathyj121@gmail.com','Testing Mail')
+//module.exports= { send_mail}

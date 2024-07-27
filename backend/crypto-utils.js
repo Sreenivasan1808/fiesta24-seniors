@@ -10,7 +10,6 @@ const encrypt = (text) => {
   let encrypted = cipher.update(text, 'utf8', 'hex');
   encrypted += cipher.final('hex');
   return {
-    secret: secretKey.toString('hex'),
     iv: iv.toString('hex'),
     content: encrypted
   };
