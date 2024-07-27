@@ -1,44 +1,20 @@
 {
   "pages": {
-    "/page": [
+    "/CoordinatorDashboard/ApproveParticipants/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-<<<<<<< HEAD
-=======
-    "/Register/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/Register/page.js"
-    ],
->>>>>>> 30c3606d4cb9190e75f5308896d7fd69882091b5
-    "/CoordinatorDashboard/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/CoordinatorDashboard/page.js"
+      "static/chunks/app/CoordinatorDashboard/ApproveParticipants/page.js"
     ],
     "/CoordinatorDashboard/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/CoordinatorDashboard/layout.js"
     ],
-    "/CoordinatorDashboard/ApproveParticipants/page": [
+    "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/CoordinatorDashboard/ApproveParticipants/page.js"
-    ],
-    "/CoordinatorDashboard/AddParticipant/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/CoordinatorDashboard/AddParticipant/page.js"
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ]
   }
 }
