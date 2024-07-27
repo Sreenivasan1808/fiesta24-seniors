@@ -5,7 +5,7 @@ import eventsJson from "../../public/events.json";
 const EventsPanel = () => {
   return (
     <div>
-      <div style={{ background: "rgb(240,240,240)", paddingLeft: "3rem", paddingRight: "3rem", color: "rgb(5,5,5)"}} className="rounded-2xl shadow-xl my-5">
+      <div style={{ background: "rgb(240,240,240)", paddingLeft: "3rem", paddingRight: "3rem", color: "rgb(5,5,5)"}} className="rounded-xl shadow-xl my-5 shadow-slate-300">
         <h1 className="w-full text-center" style={{ fontSize: "5rem" }}>
           Solo Events
         </h1>
@@ -18,7 +18,7 @@ const EventsPanel = () => {
           })}
         </div>
       </div>
-      <div style={{ background: "rgb(240,240,240)", paddingLeft: "3rem", paddingRight: "3rem", color: "rgb(5,5,5)"}} className="rounded-2xl shadow-xl my-5">
+      <div style={{ background: "rgb(240,240,240)", paddingLeft: "3rem", paddingRight: "3rem", color: "rgb(5,5,5)"}} className="rounded-xl shadow-xl my-5 shadow-slate-300">
         <h1 className="w-full text-center" style={{ fontSize: "5rem" }}>
           Group Events
         </h1>

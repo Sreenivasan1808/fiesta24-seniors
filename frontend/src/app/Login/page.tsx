@@ -43,7 +43,7 @@ const LoginPage = () => {
       const response = await axios.post(``, formData);
       if (response.status == 200) {
         router.push("/");
-        localStorage.setItem("AccessToken", response.data.accessToken);
+        sessionStorage.setItem("AccessToken", response.data.accessToken);
       } else {
         alert("Something went wrong");
       }

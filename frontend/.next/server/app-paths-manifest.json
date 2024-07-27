@@ -1,3 +1,7 @@
 {
-  "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js"
+  "/page": "app/page.js",
+  "/EventDetails/page": "app/EventDetails/page.js",
+  "/Login/page": "app/Login/page.js",
+  "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js",
+  "/CoordinatorDashboard/AddParticipant/page": "app/CoordinatorDashboard/AddParticipant/page.js"
 }
