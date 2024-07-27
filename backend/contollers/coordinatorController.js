@@ -94,9 +94,27 @@ const acceptall = async (req, res) => {
     res.status(500).json({ message: 'Acceptance failed' });
   }
 };
+const dashboard = async(req,res)=>{
+    const details = await userModel.find({status:"pending"})
+    console.log(details)
+    let arr=[]
+    for(let i=0;i<details.length;i++){
+        console.log(details[i].detail)
+        const data=await studentModel.findOne({_id:details[i].detail})
+        arr.push(data)
+    }
+    if(arr.length==0)
+    {
+        res.status(200).json("No data Found")
+    }
+    else{
+        res.status(200).json(arr)
+    }
+}
 
 module.exports = {
   Accept: accept,
   Acceptall: acceptall,
-  Reject: reject
+  Reject: reject,
+  Dashboard:dashboard
 };
