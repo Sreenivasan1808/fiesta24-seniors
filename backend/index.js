@@ -31,3 +31,5 @@ db.once("open", () => {
 
 const userRouter = require("./routes/userRoutes");
 app.use("/userRoutes", userRouter);
+const coordinatorRouter=require("./routes/coordinatorRoutes")
+app.use("/coordinatorRoutes",coordinatorRouter)

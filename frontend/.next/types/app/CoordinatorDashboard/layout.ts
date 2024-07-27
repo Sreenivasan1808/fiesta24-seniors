@@ -1,4 +1,4 @@
-// File: D:\Projects\Fiesta\Fiesta24_Seniors\frontend\src\app\CoordinatorDashboard\layout.tsx
+// File: D:\web\fiesta24-seniors\frontend\src\app\CoordinatorDashboard\layout.tsx
 import * as entry from '../../../../src/app/CoordinatorDashboard/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
