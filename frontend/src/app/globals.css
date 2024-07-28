@@ -35,6 +35,10 @@
   font-style: normal;
 }
 
+.rock-font{
+  font-family: var(--font-rock);
+}
+
 
 
 body {

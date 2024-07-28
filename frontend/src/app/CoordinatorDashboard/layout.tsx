@@ -18,14 +18,14 @@ export default function Layout({ children }: any) {
   ];
   return (
     <div className="min-h-screen flex justify-between items-start">
-      <aside className="md:w-60 border border-gray-800  h-screen bg-green-100" style={{width: "20%", minWidth:"15%"}}>
+      <aside className="md:w-60 border border-gray-800  h-screen bg-slate-600 text-white" style={{width: "20%", minWidth:"15%"}}>
         <nav>
           <ul>
             {menuItems.map(({ href, title }) => (
               <li className="m-2" key={title}>
                 <Link
                   href={href}
-                  className={`flex p-2  rounded cursor-pointer hover:bg-green-300`}
+                  className={`flex p-2  rounded cursor-pointer hover:bg-green-400 hover:text-black`}
                 >
                   {title}
                 </Link>

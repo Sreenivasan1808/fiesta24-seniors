@@ -5,9 +5,16 @@ import axios from "axios";
 import ClearIcon from "@mui/icons-material/Clear";
 import DoneIcon from "@mui/icons-material/Done";
 
+interface Participant {
+  Rollno: string,
+  name: string,
+  branch: string,
+  year: number,
+  mail: string
+}
 
 const ApproveParticipants = () => {
-  const [pendingParticipants, setPendingParticipants] = useState([]);
+  const [pendingParticipants, setPendingParticipants] = useState<Participant[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
 
