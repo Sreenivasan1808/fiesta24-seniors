@@ -4,5 +4,7 @@ const userController = require('../contollers/userController'); // Ensure the pa
 
 router.post("/register", userController.Register);
 router.post("/login", userController.login);
+router.post("/forgetpassword",userController.ForgetPass)
+router.post("/changepassword",userController.ChangePass)
 
 module.exports = router;

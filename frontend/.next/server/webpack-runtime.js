@@ -125,7 +125,11 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
+<<<<<<< HEAD
 /******/ 		__webpack_require__.h = () => ("bcda16d27ec35eac")
+=======
+/******/ 		__webpack_require__.h = () => ("16c7b19cfc6d272e")
+>>>>>>> a18e9e3 (forgetpassword added)
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

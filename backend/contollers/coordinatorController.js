@@ -10,6 +10,7 @@ const accept = async (req, res) => {
     console.log(participantMail);
     // Update the user's status to "approved"
     const result = await studentModel.findOne({ mail: participantMail });
+<<<<<<< HEAD
     const update = await userModel.updateOne(
       { detail: result._id },
       { $set: { status: "approved" } }
@@ -19,6 +20,13 @@ const accept = async (req, res) => {
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "User not found" });
+=======
+    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "approved" } });
+    console.log(result._id);
+
+    if (!result) {
+      return res.status(404).json({ message: 'User not found' });
+>>>>>>> a18e9e3 (forgetpassword added)
     }
 
     // Send an approval email
@@ -36,6 +44,7 @@ const accept = async (req, res) => {
 const reject = async (req, res) => {
   try {
     const participantMail = req.body.mail;
+<<<<<<< HEAD
     console.log(participantMail)
     const result = await studentModel.findOne({ mail: participantMail });
     // Update the user's status to "rejected"
@@ -46,6 +55,15 @@ const reject = async (req, res) => {
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "User not found" });
+=======
+    const result = await studentModel.findOne({ mail: participantMail });
+
+    // Update the user's status to "rejected"
+    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "rejected" } });
+
+    if (!result) {
+      return res.status(404).json({ message: 'User not found' });
+>>>>>>> a18e9e3 (forgetpassword added)
     }
 
     // Send a rejection email
@@ -66,6 +84,7 @@ const acceptall = async (req, res) => {
     const result = await userModel.find({ status: { $ne: "approved" } });
     console.log(result.length);
 
+<<<<<<< HEAD
     const message =
       "Dear participant, your registration has been approved by the coordinator";
     for (let i = 0; i < result.length; i++) {
@@ -73,6 +92,12 @@ const acceptall = async (req, res) => {
       const data = await studentModel.findOne({
         admissionNumber: result[i].admissionNumber,
       });
+=======
+    const message = 'Dear participant, your registration has been approved by the coordinator';
+    for (let i = 0; i < result.length; i++) {
+      console.log(typeof (result[i].admissionNumber));
+      const data = await studentModel.findOne({ admissionNumber: result[i].admissionNumber });
+>>>>>>> a18e9e3 (forgetpassword added)
       participantMail = data.mail;
       const update = await userModel.updateMany(
         { admission: result[i].admissionNumber }, // Update only those who are not already approved
@@ -80,10 +105,13 @@ const acceptall = async (req, res) => {
       );
 
       send_mail(participantMail, message);
+<<<<<<< HEAD
     }
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "No users to update" });
+=======
+>>>>>>> a18e9e3 (forgetpassword added)
     }
 
     // Fetch updated user emails to send approval emails
@@ -126,10 +154,38 @@ const dashboard = async (req, res) => {
     res.status(200).json(arr);
   }
 };
+<<<<<<< HEAD
+=======
+
+const dashboard = async (req, res) => {
+  try {
+    const details = await userModel.find({ status: "pending" });
+    console.log(details);
+    let arr = [];
+    for (let i = 0; i < details.length; i++) {
+      console.log(details[i].detail);
+      const data = await studentModel.findOne({ _id: details[i].detail });
+      arr.push(data);
+    }
+    if (arr.length == 0) {
+      res.status(404).json("No data Found");
+    } else {
+      res.status(200).json(arr);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Dashboard retrieval failed' });
+  }
+};
+>>>>>>> a18e9e3 (forgetpassword added)
 
 module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
+<<<<<<< HEAD
   Dashboard: dashboard,
+=======
+  Dashboard: dashboard
+>>>>>>> a18e9e3 (forgetpassword added)
 };

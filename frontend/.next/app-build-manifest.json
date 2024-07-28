@@ -16,6 +16,7 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+<<<<<<< HEAD
     "/CoordinatorDashboard/AddParticipant/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -32,6 +33,8 @@
       "static/chunks/main-app.js",
       "static/chunks/app/EventDetails/page.js"
     ],
+=======
+>>>>>>> a18e9e3 (forgetpassword added)
     "/CoordinatorDashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -40,7 +43,11 @@
     "/Login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+<<<<<<< HEAD
       "static/chunks/app/Login/page.js"
+=======
+      "static/chunks/app/CoordinatorDashboard/layout.js"
+>>>>>>> a18e9e3 (forgetpassword added)
     ]
   }
 }
