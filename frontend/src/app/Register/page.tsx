@@ -18,6 +18,7 @@ const RegisterPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -74,7 +75,7 @@ const RegisterPage = () => {
       setConfirmPasswordError("");
       setRollNoError("");
       setConfirmPasswordError("");
-      const response = await axios.post(`${process.env.SERVER_URL}`, formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`, formData);
       if (response.status == 200) {
         alert(
           "Registered successfully. Please wait until your account is verified by our coordinator"

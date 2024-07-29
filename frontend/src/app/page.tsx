@@ -1,5 +1,5 @@
 "use client";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import EventsPanel from "@/components/EventsPanel";
 import { Rock_Salt } from "next/font/google";
 

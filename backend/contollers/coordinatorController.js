@@ -64,15 +64,12 @@ const acceptall = async (req, res) => {
   try {
     // Update all users' statuses to "approved"
     const result = await userModel.find({ status: { $ne: "approved" } });
-    console.log(result.length);
+    console.log(result);
 
-    const message =
-      "Dear participant, your registration has been approved by the coordinator";
+    const message = 'Dear participant, your registration has been approved by the coordinator';
     for (let i = 0; i < result.length; i++) {
-      console.log(typeof result[i].admissionNumber);
-      const data = await studentModel.findOne({
-        admissionNumber: result[i].admissionNumber,
-      });
+      // console.log(typeof (result[i].admissionNumber));
+      const data = await studentModel.findOne({ _id: result[i].detail });
       participantMail = data.mail;
       const update = await userModel.updateMany(
         { admission: result[i].admissionNumber }, // Update only those who are not already approved
@@ -82,19 +79,15 @@ const acceptall = async (req, res) => {
       send_mail(participantMail, message);
     }
 
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "No users to update" });
-    }
-
     // Fetch updated user emails to send approval emails
-    const users = await userModel.find({ status: "approved" }, "mail");
+    // const users = await userModel.find({ status: "approved" }, "mail");
 
-    users.forEach((user) => {
-      send_mail(
-        user.mail,
-        "Dear participant, your registration has been approved by the coordinator"
-      );
-    });
+    // users.forEach((user) => {
+    //   send_mail(
+    //     user.mail,
+    //     "Dear participant, your registration has been approved by the coordinator"
+    //   );
+    // });
 
     res.status(200).json({ message: "All users approved and notified" });
   } catch (error) {

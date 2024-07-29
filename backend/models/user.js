@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  admissionNumber: {
-    type: Number,
+  Rollno: {
+    type: String,
     unique: true,
     required: true,
   },

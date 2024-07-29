@@ -6,17 +6,18 @@ import ClearIcon from "@mui/icons-material/Clear";
 import DoneIcon from "@mui/icons-material/Done";
 
 interface Participant {
-  Rollno: string,
-  name: string,
-  branch: string,
-  year: number,
-  mail: string
+  Rollno: string;
+  name: string;
+  branch: string;
+  year: number;
+  mail: string;
 }
 
 const ApproveParticipants = () => {
-  const [pendingParticipants, setPendingParticipants] = useState<Participant[]>([]);
+  const [pendingParticipants, setPendingParticipants] = useState<Participant[]>(
+    []
+  );
   const [isLoading, setIsLoading] = useState(true);
-
 
   const fetchData = async () => {
     const response = await axios.get(
@@ -42,8 +43,11 @@ const ApproveParticipants = () => {
 
   const handleApproval = async (e: any) => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/accept`, {mail: e});
-      if(response.status == 200){
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/accept`,
+        { mail: e }
+      );
+      if (response.status == 200) {
         alert("Approved user");
         console.log(response.data);
         fetchData();
@@ -51,12 +55,41 @@ const ApproveParticipants = () => {
     } catch (error) {
       alert("Something went wrong");
       console.log(error);
-      
     }
-    
   };
 
-  const handleRejection = (e: any) => {};
+  const handleApproveAll = async () => {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/acceptall`
+      );
+      if (response.status == 200) {
+        alert(response.data.message);
+        console.log(response.data.message);
+        fetchData();
+      }
+    } catch (error) {
+      alert("Something went wrong");
+      console.log(error);
+    }
+  }
+
+  const handleRejection = async (e: any) => {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/reject`,
+        { mail: e }
+      );
+      if (response.status == 200) {
+        alert(response.data);
+        console.log(response.data);
+        fetchData();
+      }
+    } catch (error) {
+      alert("Something went wrong");
+      console.log(error);
+    }
+  };
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -69,6 +102,16 @@ const ApproveParticipants = () => {
   } else {
     return (
       <div>
+        <div className="w-full flex justify-end">
+          <Button
+            variant="contained"
+            color="success"
+            sx={{marginY: "1rem", borderRadius: "1rem", marginX: "2rem"}}
+            onClick={handleApproveAll}
+          >
+            Approve all participants
+          </Button>
+        </div>
         <div className="relative overflow-x-hidden m-4">
           <table
             className="w-full text-sm text-left text-gray-500 rounded-2xl border"
@@ -98,7 +141,10 @@ const ApproveParticipants = () => {
                 pendingParticipants.map &&
                 pendingParticipants.map((item, index) => {
                   return (
-                    <tr className="bg-white border-2 hover:border-green-300" key={item.mail}>
+                    <tr
+                      className="bg-white border-2 hover:border-green-300"
+                      key={item.mail}
+                    >
                       <td
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
