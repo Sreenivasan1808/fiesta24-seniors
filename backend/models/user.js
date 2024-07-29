@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
   },
   status:{
     type:String,
+  },
+  events:{
+    type:[{type:String}]
   }
 });
 

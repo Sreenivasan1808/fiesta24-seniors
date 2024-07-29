@@ -6,5 +6,6 @@ router.post("/register", userController.Register);
 router.post("/login", userController.login);
 router.post("/forgetpassword",userController.ForgetPass)
 router.post("/changepassword",userController.ChangePass)
-
+router.post("/registersoloevent",userController.RegisterSoloEvent)
+router.get("/isregistered",userController.IsRegistered)
 module.exports = router;

@@ -34,5 +34,6 @@ const send_mail = (participantMail, message) => {
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
   });
 };
+//send_mail("sarathyj121@gmail.com","hello")
 
 module.exports = { send_mail };

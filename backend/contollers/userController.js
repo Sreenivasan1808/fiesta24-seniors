@@ -1,9 +1,11 @@
 const userModel = require("../models/user");
 const studentModel = require("../models/studentmodel");
+const soloeventModel=require("../models/soloeventmodel")
+const groupevenModel=require("../models/groupevents")
 const { encrypt } = require("../crypto-utils");
 const { send_mail } = require("../mailer");
 const generatePassword = require('generate-password');
-
+const eventModel=require('../models/events')
 const Register = async (req, res) => {
   try {
     console.log("Request body:", req.body);
@@ -27,7 +29,8 @@ const Register = async (req, res) => {
       password: encrypted_password.content,
       role: "participant",
       detail: studData._id,
-      status: "pending"
+      status: "pending",
+      events:[]
     });
 
     console.log("New user object:", newUser);
@@ -56,9 +59,9 @@ const Register = async (req, res) => {
 const Login = async (req, res) => {
   try {
     const encrypted_password = encrypt(req.body.password);
-    const data = await userModel.findOne({ Rollno: req.body.rollno, password: encrypted_password.content });
+    const data = await userModel.findOne({ Rollno: req.body.rollno, password: encrypted_password.content,status:"approved"});
     if (data == null) {
-      return res.status(401).json("Invalid rollno or password");
+      return res.status(401).json("Invalid rollno or password or not approved");
     }
     return res.status(200).json("Login Successful");
   } catch (error) {
@@ -114,10 +117,41 @@ const changePassword = async (req, res) => {
     });
   }
 };
+const registerSoloevent= async(req,res) =>{
+  const data = await userModel.findOne({Rollno:req.body.rollno})
+  const registeringEvent=req.body.eventname
+  const events=data.events
+  const flag=1
+  for(let i=0;i<events.length;i++){
+    const eventTime=await eventModel.find({eventName:req.body.eventName})
+    if(eventTime.startTime==events[i].startTime||(eventTime.startTime>events[i].startTime&&eventTime.startTime<events[i].endTime)||(eventTime.endTime>events[i].startTime&&eventTime.endTime<=events[i].endTime)||(events[i].startTime>eventTime.startTime&&events[i].startTime<eventTime.endTime)||(events[i].endTime>eventTime.startTime&&events[i].endTime<=eventTime.endTime)){
+      res.status(201).json("cannot participate")
+    }
+    }
+    const newsoloevent = new soloeventModel({
+      Rollno:req.body.rollno,
+      EventName:registeringEvent
+    })
+    const s = await newsoloevent.save()
+    const update=await userModel.updateOne({Rollno:req.body.rollno})
+    res.status(200).json("can participate")
+}
+const isEventRegistered = async (req,res) => {
+  const data = await userModel.updateOne({Rollno:req.query.rollno},{$push:{events:registeringEvent}})
+  const events=data.events
+  if (req.query.eventName in events){
+    res.status(200).json("already registered")
+  }
+  else{
+    res.status(201).json("didn't registered")
+  }
+}
 
 module.exports = {
   Register: Register,
   login: Login,
   ForgetPass: forgetPassword,
-  ChangePass: changePassword
+  ChangePass: changePassword,
+  IsRegistered:isEventRegistered,
+  RegisterSoloEvent:registerSoloevent
 };
