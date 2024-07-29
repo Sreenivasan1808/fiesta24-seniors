@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -10,7 +9,7 @@ const josefin_sans = Josefin_Sans({
   variable: "--font-josefin",
 });
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Fiesta'24",

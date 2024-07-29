@@ -16,7 +16,7 @@ const EventsCard = (props: any) => {
       }}
     >
       <motion.div
-        className="relative w-40 h-36 bg-gray-200 rounded-2xl shadow-2xl"
+        className="relative w-56 h-44 bg-gray-200 rounded-2xl shadow-2xl"
         whileHover={{ scale: 0.95 }}
       >
         <Image

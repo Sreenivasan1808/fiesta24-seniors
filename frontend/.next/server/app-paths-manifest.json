@@ -1,11 +1,1 @@
-{
-  "/page": "app/page.js",
-<<<<<<< HEAD
-  "/EventDetails/page": "app/EventDetails/page.js",
-  "/Login/page": "app/Login/page.js",
-  "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js",
-  "/CoordinatorDashboard/AddParticipant/page": "app/CoordinatorDashboard/AddParticipant/page.js"
-=======
-  "/CoordinatorDashboard/page": "app/CoordinatorDashboard/page.js"
->>>>>>> a18e9e3 (forgetpassword added)
-}
+{}
