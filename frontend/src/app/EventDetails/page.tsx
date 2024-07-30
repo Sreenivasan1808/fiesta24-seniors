@@ -112,11 +112,12 @@ const EventDetails = () => {
   };
   // console.log(eventName);
   const checkRegistrationStatus = async () => {
+    
     const response = await axiosClient.get(
       `userRoutes/isregistered`,
       { params: { eventName: eventName } } //need to send rollno
     );
-    console.log(response);
+    console.log(response.status);
 
     if (response.status == 201) {
       setIsRegistered(false);
@@ -150,10 +151,10 @@ const EventDetails = () => {
         });
         break;
       }
-      let r = localStorage.getItem("role");
-      if (r) setRole(r);
-      checkRegistrationStatus();
     }
+    let r = localStorage.getItem("role");
+    if (r) setRole(r);
+    checkRegistrationStatus();
   }, [eventName]);
 
   // console.log(eventDetails);
