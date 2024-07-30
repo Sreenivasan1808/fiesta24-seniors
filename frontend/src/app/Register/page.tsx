@@ -29,12 +29,12 @@ const RegisterPage = () => {
   const router = useRouter();
 
   const validateForm = (formData: {
-    rollNo: string;
+    rollno: string;
     password: string;
     confirmPassword: string;
   }) => {
     let isValid = true;
-    if (!formData.rollNo || formData.rollNo.trim().length == 0) {
+    if (!formData.rollno || formData.rollno.trim().length == 0) {
       setRollNoError("Please enter your roll no (eg: 21BCS166)");
       isValid = false;
     }
@@ -62,7 +62,7 @@ const RegisterPage = () => {
     e.preventDefault();
     console.log(process.env.NEXT_PUBLIC_SERVER_URL);
     const formData = {
-      rollNo: rollNo,
+      rollno: rollNo,
       password: password,
       confirmPassword: confirmPassword,
     };
@@ -75,7 +75,8 @@ const RegisterPage = () => {
       setConfirmPasswordError("");
       setRollNoError("");
       setConfirmPasswordError("");
-      const response = await axiosClient.post(`/register`, {...formData}, { authorization: false });
+      
+      const response = await axiosClient.post(`userRoutes/register`, {...formData}, { Authorization: false });
       if (response.status == 200) {
         alert(
           "Registered successfully. Please wait until your account is verified by our coordinator"

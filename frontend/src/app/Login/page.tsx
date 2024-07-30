@@ -5,6 +5,9 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { axiosClient } from "../services/axiosClient";
+import {setRefreshedTokens} from "../services/axiosClient";
+import { log } from "console";
 
 const LoginPage = () => {
   const [rollNo, setRollNo] = useState("");
@@ -38,12 +41,15 @@ const LoginPage = () => {
 
     const isValid = validateForm();
     const formData = { rollNo: rollNo, password: password };
+    console.log(formData);
+    
 
     if (isValid == true) {
-      const response = await axios.post(``, formData);
+      const response = await axiosClient.post('/userRoutes/login', formData);
       if (response.status == 200) {
         router.push("/");
-        sessionStorage.setItem("AccessToken", response.data.accessToken);
+        // sessionStorage.setItem("AccessToken", response.data.accessToken);
+        setRefreshedTokens(response.data);
       } else {
         alert("Something went wrong");
       }
@@ -54,7 +60,7 @@ const LoginPage = () => {
     <>
       <div className="flex justify-center items-center min-h-screen">
         <div style={{ background: "#f5f5f5" }} className="rounded-xl shadow-xl">
-          <form className="flex flex-col justify-center p-3 min-h-96 min-w-80">
+          <form className="flex flex-col justify-center p-3 min-h-96 min-w-80" onSubmit={handleSubmit}>
             <h2 className="text-emerald-950 text-center text-3xl mb-5">
               Login
             </h2>

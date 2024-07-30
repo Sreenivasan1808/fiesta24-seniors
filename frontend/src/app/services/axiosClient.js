@@ -1,6 +1,6 @@
 import { createAxiosClient } from "./createAxiosClient";
 
-const REFRESH_TOKEN_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/refreshToken`;
+const REFRESH_TOKEN_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/userRoutes/refresh-token`;
 const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
 
 function getCurrentAccessToken() {
@@ -12,7 +12,7 @@ function getCurrentRefreshToken() {
 }
 
 
-function setRefreshedTokens(tokens){
+export function setRefreshedTokens(tokens){
     console.log('set refresh tokens...')
     // const login = useAuthStore.getState().login
     // login(tokens)

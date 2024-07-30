@@ -82,10 +82,12 @@ const Login = async (req, res) => {
   try {
     const encrypted_password = encrypt(req.body.password);
     const data = await userModel.findOne({
-      Rollno: req.body.rollno,
+      Rollno: req.body.rollNo,
       password: encrypted_password.content,
       status: "approved",
     });
+    console.log(req.body);
+    console.log(data);
     if (data == null) {
       return res.status(401).json("Invalid rollno or password or not approved");
     }
