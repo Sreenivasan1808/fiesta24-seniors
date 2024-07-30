@@ -96,6 +96,7 @@ const Login = async (req, res) => {
       message: "Login Successful",
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
+      role:data.role
     });
   } catch (error) {
     return res.status(500).json({
@@ -212,7 +213,9 @@ const registerSoloevent = async (req, res) => {
 const isEventRegistered = async (req, res) => {
   const data = await userModel.findOne({ Rollno: req.query.rollno });
   const events = data.events;
-  if (req.query.eventName in events) {
+  console.log(events)
+  if (events.includes(req.query.eventName)) {
+    console.log("hi");
     res.status(200).json("already registered");
   } else {
     res.status(201).json("didn't registered");
