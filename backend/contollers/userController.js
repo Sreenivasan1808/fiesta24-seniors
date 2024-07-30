@@ -29,7 +29,6 @@ const refreshToken = (req, res) => {
 const Register = async (req, res) => {
   try {
     console.log("Request body:", req.body);
-
     const studData = await studentModel.findOne({ Rollno: req.body.Rollno });
     if (studData == null) {
       return res.status(404).json("No such student available");

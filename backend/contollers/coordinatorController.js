@@ -3,6 +3,7 @@ const { send_mail } = require("../mailer"); // Adjust the import based on your f
 const userModel = require("../models/user");
 const studentModel = require("../models/studentmodel");
 const {excelDownloader}=require("../excel")
+const {encrypt,decrypt} = require("../crypto-utils")
 dotenv.config();
 
 const accept = async (req, res) => {
@@ -88,6 +89,29 @@ const acceptall = async (req, res) => {
     res.status(500).json({ message: "Acceptance failed" });
   }
 };
+const participantpasswordchange= async (req,res)=>{
+  try{
+    const rollno=req.body.Rollno
+    console.log("hi")
+    const newpassword=encrypt(req.body.newpassword).content
+    const data =  await userModel.updateOne({Rollno:rollno},{$set :{password:newpassword}})
+    console.log(data)
+    if(data.modifiedCount==1){
+      res.status(200).json("update success")
+    }
+    else
+    {
+      res.status(201).json("no such data found")
+    }
+  }
+  catch(error)
+  {
+    res.status(500).json({message:"something went wrong",
+      error:error
+    })
+  }
+  
+}
 
 const dashboard = async (req, res) => {
   const details = await userModel.find({ status: "pending" });
@@ -117,5 +141,6 @@ module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
-  Dashboard: dashboard
+  Dashboard: dashboard,
+  participantpasswordchange:participantpasswordchange
 };
