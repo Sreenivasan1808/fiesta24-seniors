@@ -6,9 +6,12 @@ import {useRouter} from "next/navigation"
 
 const Navbar = () => {
   const [hasLoggedIn, setHasLoggedIn] = useState(false);
+  const [role, setRole] = useState("");
   useEffect(() => {
     const checkToken = () => {
       const token = sessionStorage.getItem("accessToken");
+      const tempRole = localStorage.getItem("role");
+      setRole(tempRole);
       setHasLoggedIn(token !== null);
     };
 
@@ -25,7 +28,7 @@ const Navbar = () => {
           <img src="" alt="Fiesta'24" />
         </Link>
         <div className="m-2 p-2 flex gap-6">
-          <Link href="/CoordinatorDashboard" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Coordinator Dashboard</Link>
+          { role=="coordinator" ?  <Link href="/CoordinatorDashboard" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Coordinator Dashboard</Link> : <></>}
           <Link href="/#events" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Events</Link>
 
         {!hasLoggedIn? 
