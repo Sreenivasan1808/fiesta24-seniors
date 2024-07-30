@@ -17,4 +17,4 @@ const eventSchema=new mongoose.Schema({
         typer:String
     }
 })
-module.exports=mongoose.Model("event",eventSchema)
+module.exports=mongoose.model("event",eventSchema)
