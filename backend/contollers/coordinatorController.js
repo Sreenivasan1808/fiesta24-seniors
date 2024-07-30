@@ -7,10 +7,11 @@ dotenv.config();
 
 const accept = async (req, res) => {
   try {
-    const participantMail = req.body.mail;
+    const result=await studentModel.findOne({Rollno:req.body.Rollno})
+    const participantMail = result.mail;
     console.log(participantMail);
     // Update the user's status to "approved"
-    const result = await studentModel.findOne({ mail: participantMail });
+    
     const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "approved" } });
     console.log(result._id);
 
@@ -32,8 +33,8 @@ const accept = async (req, res) => {
 
 const reject = async (req, res) => {
   try {
-    const participantMail = req.body.mail;
-    const result = await studentModel.findOne({ mail: participantMail });
+    const result=await studentModel.findOne({Rollno:req.body.Rollno})
+    const participantMail = result.mail;
 
     // Update the user's status to "rejected"
     const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "rejected" } });
