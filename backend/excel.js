@@ -6,7 +6,7 @@ const groupeventModel=require("./models/groupevents")
 // Sample JSON data
 const download = async (req, res) => {
     try {
-        if(req.query.type=="solo"){
+        if(req.query.eventType=="solo"){
             const participants = await soloeventModel.find({ EventName: req.query.eventName });
             let jsonData = [];
             

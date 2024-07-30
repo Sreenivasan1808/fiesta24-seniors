@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   events:{
     type:[{type:String}]
-  }
+  } 
 });
 
 module.exports = mongoose.model("user", userSchema);
