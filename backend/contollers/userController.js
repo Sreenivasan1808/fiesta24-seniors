@@ -6,7 +6,6 @@ const { encrypt } = require("../crypto-utils");
 const { send_mail } = require("../mailer");
 const generatePassword = require("generate-password");
 const eventModel = require("../models/events");
-const { generateTokens } = require("../utils/jwtUtils");
 const jwt = require('jsonwebtoken');
 const { verifyRefreshToken, generateTokens } = require('../utils/jwtUtils');
 
