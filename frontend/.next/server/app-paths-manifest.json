@@ -1,7 +1,5 @@
 {
   "/page": "app/page.js",
-  "/Login/page": "app/Login/page.js",
-  "/Register/page": "app/Register/page.js",
-  "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js",
-  "/CoordinatorDashboard/page": "app/CoordinatorDashboard/page.js"
+  "/EventDetails/page": "app/EventDetails/page.js",
+  "/Login/page": "app/Login/page.js"
 }
