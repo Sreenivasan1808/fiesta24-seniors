@@ -44,6 +44,7 @@ const EventDetails = () => {
     maxTeamMembers: 0,
   });
   const [open, setOpen] = useState(false);
+  const [role, setRole] = useState("");
   const [modalTitle, setModalTitle] = useState("");
   const [modalText, setModalText] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
@@ -67,14 +68,14 @@ const EventDetails = () => {
     let api;
     if (eventDetails.eventType == "Group") {
       console.log("Group register");
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
+      api = "userRoutes/registergroupevent";
       postData = {
         eventName: eventName,
         teamName: teamName,
         teamMembers: teamMembers,
       };
     } else {
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
+      api = "userRoutes/registersoloevent";
       postData = { eventName: eventName };
     }
     try {
@@ -112,10 +113,12 @@ const EventDetails = () => {
   // console.log(eventName);
   const checkRegistrationStatus = async () => {
     const response = await axiosClient.get(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/userRoutes/isregistered`,
+      `userRoutes/isregistered`,
       { params: { eventName: eventName } } //need to send rollno
     );
-    if (response.status == 204) {
+    console.log(response);
+
+    if (response.status == 201) {
       setIsRegistered(false);
     } else if (response.status == 200) {
       setIsRegistered(true);
@@ -147,6 +150,8 @@ const EventDetails = () => {
         });
         break;
       }
+      let r = localStorage.getItem("role");
+      if (r) setRole(r);
       checkRegistrationStatus();
     }
   }, [eventName]);
@@ -234,29 +239,33 @@ const EventDetails = () => {
             </div>
           </div>
           <div>
-            {!isRegistered ? (
-              <Button
-                variant="contained"
-                color="success"
-                sx={{ borderRadius: "1.5rem" }}
-                onClick={
-                  !isGroupEvent
-                    ? handleRegister
-                    : () => {
-                        setFormModalOpen(true);
-                      }
-                }
-              >
-                Register for this Event
-              </Button>
+            {role == "participant" ? (
+              !isRegistered ? (
+                <Button
+                  variant="contained"
+                  color="success"
+                  sx={{ borderRadius: "1.5rem" }}
+                  onClick={
+                    !isGroupEvent
+                      ? handleRegister
+                      : () => {
+                          setFormModalOpen(true);
+                        }
+                  }
+                >
+                  Register for this Event
+                </Button>
+              ) : (
+                <Alert
+                  severity="success"
+                  variant="filled"
+                  className="rounded-2xl"
+                >
+                  You have already registered for this event
+                </Alert>
+              )
             ) : (
-              <Alert
-                severity="success"
-                variant="filled"
-                className="rounded-2xl"
-              >
-                You have already registered for this event
-              </Alert>
+              <>You can't register</>
             )}
 
             <Modal

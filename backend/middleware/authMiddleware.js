@@ -9,7 +9,7 @@ const authenticateToken = (req, res, next) => {
 
   try {
     const user = verifyAccessToken(token);
-    req.body = user;
+    req.user = user;
     next();
   } catch (err) {
     return res.sendStatus(403);

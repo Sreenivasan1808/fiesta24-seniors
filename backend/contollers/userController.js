@@ -87,8 +87,9 @@ const Login = async (req, res) => {
       password: encrypted_password.content,
       status: "approved",
     });
-    console.log(req.body);
-    console.log(data);
+    // console.log(req.body);
+    // console.log(data);
+    // console.log("Ulle")
     if (data == null) {
       return res.status(401).json("Invalid rollno or password or not approved");
     }
