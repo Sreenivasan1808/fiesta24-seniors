@@ -37,15 +37,15 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
     const isValid = validateForm();
-    const formData = { rollNo: rollNo, password: password };
+    const formData = { Rollno: rollNo, password: password };
     console.log(formData);
     
 
     if (isValid == true) {
       const response = await axiosClient.post('/userRoutes/login', formData);
+      console.log(response);
+      
       if (response.status == 200) {
         router.push("/");
         // sessionStorage.setItem("AccessToken", response.data.accessToken);

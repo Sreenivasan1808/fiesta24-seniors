@@ -23,7 +23,7 @@ export function setRefreshedTokens(tokens){
     localStorage.setItem("role", tokens.role);
 }
 
-async function logout(){
+export async function logout(){
     sessionStorage.removeItem("accessToken");
     sessionStorage.removeItem("refreshToken");
     localStorage.removeItem("role");

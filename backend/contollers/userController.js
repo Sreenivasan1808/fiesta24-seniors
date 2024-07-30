@@ -82,7 +82,7 @@ const Login = async (req, res) => {
   try {
     const encrypted_password = encrypt(req.body.password);
     const data = await userModel.findOne({
-      Rollno: req.body.rollNo,
+      Rollno: req.body.Rollno,
       password: encrypted_password.content,
       status: "approved",
     });
@@ -162,7 +162,7 @@ const changePassword = async (req, res) => {
 };
 const registerSoloevent = async (req, res) => {
   try {
-    const data = await userModel.findOne({ Rollno: req.body.rollno });
+    const data = await userModel.findOne({ Rollno: req.user.Rollno });
     const registeringEvent = req.body.eventName;
     const events1 = data.events;
     let flag = 1;

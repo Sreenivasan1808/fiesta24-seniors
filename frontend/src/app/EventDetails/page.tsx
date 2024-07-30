@@ -68,14 +68,14 @@ const EventDetails = () => {
     let api;
     if (eventDetails.eventType == "Group") {
       console.log("Group register");
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
+      api = "userRoutes/registergroupevent";
       postData = {
         eventName: eventName,
         teamName: teamName,
         teamMembers: teamMembers,
       };
     } else {
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
+      api = "userRoutes/registersoloevent";
       postData = { eventName: eventName };
     }
     try {
