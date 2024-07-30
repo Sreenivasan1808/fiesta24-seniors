@@ -39,7 +39,7 @@ const download = async (req, res) => {
             res.send(buffer);
         }
         else{
-            const participants = await groupeventModel.find({ event: req.query.eventName });
+            const participants = await groupeventModel.find({ EventName: req.query.eventName });
             let jsonData = [];
             console.log(participants)
             for (let i = 0; i < participants.length; i++) {
