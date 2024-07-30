@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import {axiosClient} from "../../services/axiosClient";
 import ClearIcon from "@mui/icons-material/Clear";
 import DoneIcon from "@mui/icons-material/Done";
 
@@ -20,8 +20,8 @@ const ApproveParticipants = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/dashboard`
+    const response = await axiosClient.get(
+      `coordinatorRoutes/dashboard`
     );
     if (response) setIsLoading(false);
     console.log(response.status);
@@ -43,8 +43,8 @@ const ApproveParticipants = () => {
 
   const handleApproval = async (e: any) => {
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/accept`,
+      const response = await axiosClient.post(
+        `coordinatorRoutes/accept`,
         { mail: e }
       );
       if (response.status == 200) {
@@ -60,8 +60,8 @@ const ApproveParticipants = () => {
 
   const handleApproveAll = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/acceptall`
+      const response = await axiosClient.post(
+        `coordinatorRoutes/acceptall`
       );
       if (response.status == 200) {
         alert(response.data.message);
@@ -76,8 +76,8 @@ const ApproveParticipants = () => {
 
   const handleRejection = async (e: any) => {
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/coordinatorRoutes/reject`,
+      const response = await axiosClient.post(
+        `coordinatorRoutes/reject`,
         { mail: e }
       );
       if (response.status == 200) {

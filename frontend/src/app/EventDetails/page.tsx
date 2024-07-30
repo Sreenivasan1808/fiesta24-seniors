@@ -11,11 +11,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import axios from "axios";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import GroupEventRegisterForm from "@/components/GroupEventRegisterForm";
+import { axiosClient } from "../services/axiosClient";
 
 interface Event {
   eventName: string;
@@ -64,7 +64,7 @@ const EventDetails = () => {
 
   const handleRegister = async () => {
     let postData;
-    let api ;
+    let api;
     if (eventDetails.eventType == "Group") {
       console.log("Group register");
       api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
@@ -78,7 +78,7 @@ const EventDetails = () => {
       postData = { eventName: eventName };
     }
     try {
-      const response = await axios.post(api, postData);
+      const response = await axiosClient.post(api, postData);
       if (response.status == 200) {
         setModalTitle("Success");
         setModalText("You have successfully registered");
@@ -95,21 +95,34 @@ const EventDetails = () => {
       // handleOpen();
     } catch (error) {
       setModalTitle("Sorry");
-        setModalText("Registration failed");
+      setModalText("Registration failed");
       console.log(error);
-    }finally{
+    } finally {
       handleOpen();
     }
   };
 
-  const handleTeamInfoSubmit = (e:any) => {
+  const handleTeamInfoSubmit = (e: any) => {
     e.preventDefault();
     console.log("Group event");
     setFormModalOpen(false);
-    
+
     handleRegister();
   };
   // console.log(eventName);
+  const checkRegistrationStatus = async () => {
+    const response = await axiosClient.get(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/userRoutes/isregistered`,
+      { params: { eventName: eventName } } //need to send rollno
+    );
+    if (response.status == 204) {
+      setIsRegistered(false);
+    } else if (response.status == 200) {
+      setIsRegistered(true);
+    } else {
+      console.log(response.data);
+    }
+  };
 
   useEffect(() => {
     for (let event_ of eventsJson) {
@@ -132,15 +145,13 @@ const EventDetails = () => {
           minTeamMembers: minTeamMembers,
           maxTeamMembers: maxTeamMembers,
         });
-        return;
+        break;
       }
+      checkRegistrationStatus();
     }
   }, [eventName]);
 
   // console.log(eventDetails);
-  
-
-  
 
   const style = {
     position: "absolute",
@@ -181,7 +192,11 @@ const EventDetails = () => {
   });
 
   let facultyTemplate = eventDetails.facultyInCharge.map((faculty, index) => {
-    return <h3 key={index} className="mx-6 text-center">{faculty}</h3>;
+    return (
+      <h3 key={index} className="mx-6 text-center">
+        {faculty}
+      </h3>
+    );
   });
 
   // console.log(renderTemplate);
@@ -256,7 +271,13 @@ const EventDetails = () => {
                   variant="h6"
                   component="h2"
                   className={"text-center"}
-                  color={modalTitle == "Success" ? "sucess" : modalTitle == "Warning" ? "warning" : "error"}
+                  color={
+                    modalTitle == "Success"
+                      ? "sucess"
+                      : modalTitle == "Warning"
+                      ? "warning"
+                      : "error"
+                  }
                 >
                   {modalTitle == "Success" ? (
                     <CheckCircleOutlineIcon className="mr-2" />

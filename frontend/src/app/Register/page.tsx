@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { motion } from "framer-motion";
-import axios from "axios";
+import {axiosClient} from "../services/axiosClient";
 import { useRouter } from "next/navigation";
 import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -75,7 +75,7 @@ const RegisterPage = () => {
       setConfirmPasswordError("");
       setRollNoError("");
       setConfirmPasswordError("");
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`, formData);
+      const response = await axiosClient.post(`/register`, {...formData}, { authorization: false });
       if (response.status == 200) {
         alert(
           "Registered successfully. Please wait until your account is verified by our coordinator"

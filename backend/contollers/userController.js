@@ -6,6 +6,8 @@ const { encrypt } = require("../crypto-utils");
 const { send_mail } = require("../mailer");
 const generatePassword = require('generate-password');
 const eventModel=require('../models/events')
+
+
 const Register = async (req, res) => {
   try {
     console.log("Request body:", req.body);
@@ -134,10 +136,11 @@ const registerSoloevent= async(req,res) =>{
     })
     const s = await newsoloevent.save()
     const update=await userModel.updateOne({Rollno:req.body.rollno})
+    const data1 = await userModel.updateOne({Rollno:req.query.rollno},{$push:{events:registeringEvent}})
     res.status(200).json("can participate")
 }
 const isEventRegistered = async (req,res) => {
-  const data = await userModel.updateOne({Rollno:req.query.rollno},{$push:{events:registeringEvent}})
+  
   const events=data.events
   if (req.query.eventName in events){
     res.status(200).json("already registered")

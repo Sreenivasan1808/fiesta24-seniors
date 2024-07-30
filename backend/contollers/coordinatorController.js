@@ -10,13 +10,6 @@ const accept = async (req, res) => {
     console.log(participantMail);
     // Update the user's status to "approved"
     const result = await studentModel.findOne({ mail: participantMail });
-<<<<<<< HEAD
-    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "approved" } });
-    console.log(result._id);
-
-    if (!result) {
-      return res.status(404).json({ message: 'User not found' });
-=======
     const update = await userModel.updateOne(
       { detail: result._id },
       { $set: { status: "approved" } }
@@ -26,7 +19,6 @@ const accept = async (req, res) => {
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "User not found" });
->>>>>>> 7a5a0a71fac1df8dd756d5bdcbf9133191cda834
     }
 
     // Send an approval email
@@ -44,15 +36,6 @@ const accept = async (req, res) => {
 const reject = async (req, res) => {
   try {
     const participantMail = req.body.mail;
-<<<<<<< HEAD
-    const result = await studentModel.findOne({ mail: participantMail });
-
-    // Update the user's status to "rejected"
-    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "rejected" } });
-
-    if (!result) {
-      return res.status(404).json({ message: 'User not found' });
-=======
     console.log(participantMail)
     const result = await studentModel.findOne({ mail: participantMail });
     // Update the user's status to "rejected"
@@ -63,7 +46,6 @@ const reject = async (req, res) => {
 
     if (result.matchedCount === 0) {
       return res.status(404).json({ message: "User not found" });
->>>>>>> 7a5a0a71fac1df8dd756d5bdcbf9133191cda834
     }
 
     // Send a rejection email
@@ -86,13 +68,8 @@ const acceptall = async (req, res) => {
 
     const message = 'Dear participant, your registration has been approved by the coordinator';
     for (let i = 0; i < result.length; i++) {
-<<<<<<< HEAD
-      console.log(typeof (result[i].admissionNumber));
-      const data = await studentModel.findOne({ admissionNumber: result[i].admissionNumber });
-=======
       // console.log(typeof (result[i].admissionNumber));
       const data = await studentModel.findOne({ _id: result[i].detail });
->>>>>>> 7a5a0a71fac1df8dd756d5bdcbf9133191cda834
       participantMail = data.mail;
       const update = await userModel.updateMany(
         { admission: result[i].admissionNumber }, // Update only those who are not already approved
@@ -142,10 +119,6 @@ const dashboard = async (req, res) => {
     res.status(200).json(arr);
   }
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a5a0a71fac1df8dd756d5bdcbf9133191cda834
 
 
 const summa = ()=>{
@@ -159,9 +132,5 @@ module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
-<<<<<<< HEAD
-  Dashboard: dashboard
-=======
   Dashboard: dashboard,
->>>>>>> 7a5a0a71fac1df8dd756d5bdcbf9133191cda834
 };

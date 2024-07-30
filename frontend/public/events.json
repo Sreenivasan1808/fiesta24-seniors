@@ -1,402 +1,478 @@
 [
-    {
-        "eventName": "Solo Dance",
-        "eventType": "Solo",
-        "rules": [
-            "Audio track must be in mp3 format.",
-            "Time Duration: 4 mins.",
-            "Whistling, Vulgarity in songs, Moves, Costumes or any sort will lead to disqualification.",
-            "Dangerous properties should not be used.",
-            "Songs must not be highly peppy (Strictly Avoid kuthu songs).",
-            "Innovation and creativity in dance will be given additional credits.",
-            "The dress code must be proper and get approval from the concerned staff.",
-            "Reporting time: 09:10 AM",
-            "Any kind of dance may be performed like classical free style or folk etc.",
-            "Maximum of 20 participants who complete registration corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis to the concerned staff.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Dr.T.Prabaharan/MECH",
-            "Dr.C.Gangalakshmi/ENG"
-        ],
-        "venue": "MCC (Main Auditorium)",
-        "startTime": "2024-08-17T09:15:00",
-        "endTime": "2024-08-17T10:45:00"
-    },
-    {
-        "eventName": "Group Dance",
-        "eventType": "Group",
-        "rules": [
-            "No of members: Minimum 4 to Maximum 15.",
-            "Time Duration: 5minutes.",
-            "Reporting time: 10:00 AM.",
-            "Concepts or themes can be used without affecting the dance.",
-            "Whistling, Vulgarity, in Songs, Moves, Costumes or any forms will lead to disqualification.",
-            "Innovation and creativity in dance will be given additional credits.",
-            "Proper approval for dress must be sought from the concerned staff-in-charge earlier.",
-            "Dangerous properties should not be used.",
-            "Songs must not be highly peppy (Strictly Avoid kuthu songs).",
-            "No participation of boys and girls together.",
-            "Maximum no of teams \u2013 12; corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Dr.T.Prabaharan/MECH",
-            "Dr.C.Gangalakshmi/ENG"
-        ],
-        "venue": "MCC (Main Auditorium)",
-        "startTime": "2024-08-17T10:45:00",
-        "endTime": "2024-08-17T12:30:00",
-        "minTeamMembers": 4,
-        "maxTeamMembers": 15
-    },
-    {
-        "eventName": "Solo Instrumental",
-        "eventType": "Solo",
-        "rules": [
-            "Students should be in formal wear.",
-            "Time Duration: 3 mins",
-            "Reporting Time : 09:10 AM",
-            "Any kind of instruments (Percussions Non-Percussions Keys Strings Wind Instruments) or Multiple instruments (e.g. keyboard + Guitar) can be played.",
-            "Mild Karaoke/ Mild Voiceovers can be used (if needed) upon which the instrument can be played.",
-            "Judging criteria: Song difficulty, Tempo, Rhythm, No. Of flaws, Improvisations.",
-            "Submit your audio track on or before 10.08.2023 by 5 pm in mp3 format (Normalized).",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Mr.Haamidh/CIV",
-            "Dr.Winfred Shashikanth/PHY"
-        ],
-        "venue": "Mech Seminar Hall",
-        "startTime": "2024-08-17T09:00:00",
-        "endTime": "2024-08-17T09:45:00"
-    },
-    {
-        "eventName": "Solo Singing",
-        "eventType": "Solo",
-        "rules": [
-            "Reporting time: 10:00 AM; Students should be in formal wear.",
-            "Time Duration: 3 mins.",
-            "No pre-recordings should be played.",
-            "Only Karaoke is allowed. No other background voices.",
-            "Any style of music can be performed (Folk, Jazz, Melody, Pop, Rap etc.).",
-            "Only Tamil songs are allowed.",
-            "Vulgarity in song selection lyrics or any forms will lead to disqualification.",
-            "Judging criteria will be: Shruthi, Voice, Clarity, Song difficulty, Tempo, Modulations and Improvisations.",
-            "The Jury\u2019s decision is final; Prelims will be conducted if necessary.",
-            "Submit your karaoke to the concerned staff on or before 10.08.2023 by 5 pm in mp3 format (Normalized)."
-        ],
-        "facultyInCharge": [
-            "Mr.Haamidh/CIV",
-            "Dr.Winfred Shashikanth/PHY"
-        ],
-        "venue": "Mech Seminar Hall",
-        "startTime": "2024-08-17T10:00:00",
-        "endTime": "2024-08-17T12:30:00"
-    },
-    {
-        "eventName": "As You Like It",
-        "eventType": "Solo",
-        "rules": [
-            "Time Duration: 3 mins.",
-            "Reporting Time : 1:30 PM",
-            "Students can exhibit any talents like Juggling, Martial Art, Beat Box, Silambam, Hulahoops, Mimicry, Mono-act etc.",
-            "Singing Dancing Instrumentals are NOT ALLOWED.",
-            "Participants should bring the necessary items.",
-            "The audio track can be played in the background. If so audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized).",
-            "Vulgarity in any form is strictly prohibited.",
-            "The Jury\u2019s decision is final. If necessary prelims will be conducted."
-        ],
-        "facultyInCharge": [
-            "Mr.Viswalingam/ENG"
-        ],
-        "venue": "Mech Seminar Hall",
-        "startTime": "2024-08-17T13:30:00",
-        "endTime": "2024-08-17T15:00:00"
-    },
-    {
-        "eventName": "Treasure Hunt",
-        "eventType": "Group",
-        "rules": [
-            "The participating team must have exactly 5 members. There will be no changes in the participants list after initial submission.",
-            "A total of 30 teams (15 Boys teams and 15 Girls teams) will be shortlisted for prelims round based on first come first served.",
-            "Participants should report to venue before 9:10am. Prelims round starts by 9:15am.",
-            "Elimination will be there based on your prelims score.",
-            "15 teams will be shortlisted for the item collection round.",
-            "If you borrow any items within the campus from anybody you must be responsible for returning it.",
-            "Interaction among other teams is strictly prohibited.",
-            "For the final round, 8 teams will be shortlisted.",
-            "The first team to finish the final level will be the winner of the event.",
-            "Final score will be calculated based on the performance from previous levels.",
-            "Be genuine and ethical to solve the clues at each level on your own. Googling the answers is strictly prohibited.",
-            "The Jury\u2019s decision will be final."
-        ],
-        "facultyInCharge": [
-            "Dr.J.Senthil Kumar/ECE"
-        ],
-        "venue": "S&H Seminar Hall \u2013 Prelims at 9.15 am; Finals - In front of AJ Block",
-        "startTime": "2024-08-17T09:15:00",
-        "endTime": "2024-08-17T10:15:00",
-        "minTeamMembers": 5,
-        "maxTeamMembers": 5
-    },
-    {
-        "eventName": "Quiz",
-        "eventType": "Group",
-        "rules": [
-            "Venue Reporting Time : 9:45 AM",
-            "Each team should consist of two members. Prelims will be in written format.",
-            "Six teams will be selected from the prelims.",
-            "Topics include history science sports cinema etc.",
-            "Main Event:",
-            "Round -1:",
-            [
-                "Each team gets one question.",
-                "Each question is a pass question.",
-                "Correct answer for direct question gets 10 marks.",
-                "No negative mark for the wrong answer.",
-                "Correct answer for passed question gets 5 marks."
-            ],
-            "Round-2:",
-            [
-                "Each team gets 1 question.",
-                "Each correct answer scores 10 points.",
-                "Wrong answers score a negative mark of -5 points.",
-                "Each question is not a pass question."
-            ],
-            "Round-3:",
-            [
-                "Each team gets one question.",
-                "Correct answer on first clue gets 20 marks.",
-                "No negative marking.",
-                "Correct answer on second clue gets 15 marks.",
-                "Answer on third clue gets 10 marks.",
-                "Answer on last clue gets 5 marks."
-            ],
-            "Round-4:",
-            [
-                "Each team gets one question.",
-                "Only one person will answer the question.",
-                "Should answer rapidly.",
-                "Each question is not a pass question.",
-                "No negative marking.",
-                "Correct answer gets 5 marks."
-            ],
-            "Round-5:",
-            [
-                "Each team gets one question and genre based.",
-                "No negative marking.",
-                "Each question is not a pass question."
-            ],
-            "Jury\u2019s decision will be final."
-        ],
-        "facultyInCharge": [
-            "Mrs.A.Annie Aglin/BT"
-        ],
-        "venue": "S&H Block Seminar Hall",
-        "startTime": "2024-08-17T10:00:00",
-        "endTime": "2024-08-17T12:30:00",
-        "minTeamMembers": 2,
-        "maxTeamMembers": 2
-    },
-    {
-        "eventName": "Lyrical Hunt",
-        "eventType": "Group",
-        "rules": [
-            "Reporting Time : 01:15 PM",
-            "Each team should have 3 members",
-            "The Event comprises of 2 segments - Prelims followed by the Main Event.",
-            "Prelims will be conducted and 8 teams will be selected for the main round.",
-            "Prelims - 3 segments; each segment - 10 questions & each question - 1 point.",
-            "Questions for prelims - in the form of jumbled lyric, complete the lyric and guess the song.",
-            "Main round will consist of 5 to 6 segments like Karaoke, Connections, Rapid Fire, Reverse the song, etc.,",
-            "Marks for each segment will be announced on the spot.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Mrs.S.Usha/CIV"
-        ],
-        "venue": "S&H Block Seminar Hall",
-        "startTime": "2024-08-17T13:30:00",
-        "endTime": "2024-08-17T15:30:00",
-        "minTeamMembers": 3,
-        "maxTeamMembers": 3
-    },
-    {
-        "eventName": "Sherlock Holmes",
-        "eventType": "Group",
-        "rules": [
-            "Reporting Time: 9:10 AM",
-            "It is a detective game.",
-            "Each team should consist of two members.",
-            "Three rounds will be conducted as a part of this event.",
-            "Rounds will be revealed only during the contest.",
-            "Those 3 rounds also include a prelim.",
-            "Participation of girls and boys together is strictly prohibited.",
-            "Jury\u2019s decision will be final."
-        ],
-        "facultyInCharge": [
-            "Mr.J.Anish Jafrin Thilak/MECH"
-        ],
-        "venue": "S & H Block - AV Hall",
-        "startTime": "2024-08-17T09:00:00",
-        "endTime": "2024-08-17T11:00:00",
-        "minTeamMembers": 2,
-        "maxTeamMembers": 2
-    },
-    {
-        "eventName": "Poster Making",
-        "eventType": "Group",
-        "rules": [
-            "Two members per team. Topic: On the spot",
-            "You will get 90 mins to work on your poster.",
-            "Both paper based and digital graphics are allowed.",
-            "Poster should be made in A3 size.",
-            "For paper based, participants should bring A3 sheets and all other necessary items.",
-            "For digital graphics, participants must bring their laptops with necessary software installed.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Dr.M.Suresh Kumar/PHY"
-        ],
-        "venue": "S&H Block - Computer Lab - I (I Floor)",
-        "startTime": "2024-08-17T13:30:00",
-        "endTime": "2024-08-17T15:30:00",
-        "minTeamMembers": 2,
-        "maxTeamMembers": 2
-    },
-    {
-        "eventName": "Ezhuthaani",
-        "eventType": "Solo",
-        "rules": [
-            "Theme/Topic : On the Spot",
-            "Reporting Time : 09:10 AM",
-            "Participants need to exhibit their Creative Writing skills (fiction or poetry) in Tamil or English.",
-            "The duration of the event is 1 hour",
-            "The maximum mark for the event is 50 with the following split-up.",
-            "ontent + flow \u2013 15; marks Presentation - 5 marks;",
-            "reativity + relevance to the title - 10 marks; Vocabulary style \u2013 10 marks;",
-            "nglish / Tamil Punctuation \u2013 10 marks.",
-            "All entries will be thoroughly validated.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Mrs.J.Deepalakshmi/MATH"
-        ],
-        "venue": "SHG04 SHG05 (S&H Block Ground Floor Classrooms)",
-        "startTime": "2024-08-17T09:00:00",
-        "endTime": "2024-08-17T11:30:00"
-    },
-    {
-        "eventName": "Rangoli",
-        "eventType": "Group",
-        "rules": [
-            "Maximum of 3 participants per team.",
-            "Theme : NATIONAL INTEGRITY",
-            "Time Duration: 90 min; Reporting Time: 10:00 am.",
-            "Can use rock salt flowers dhal etc. & Should bring the necessary items.",
-            "Usage of templates are strictly prohibited.",
-            "Judging criteria will be: symmetry colour combination innovation creativity and the neatness of the Rangoli.",
-            "Jury's decision is final."
-        ],
-        "facultyInCharge": [
-            "Mrs. Blessa Binolin Pepsi/IT",
-            "Mrs.P.Madhumitha/ENG"
-        ],
-        "venue": "S&H Block Ground Floor & First Floor Verandah",
-        "startTime": "2024-08-17T10:30:00",
-        "endTime": "2024-08-17T12:30:00",
-        "minTeamMembers": 3,
-        "maxTeamMembers": 3
-    },
-    {
-        "eventName": "Monsters\u2019 Muss",
-        "eventType": "Group",
-        "rules": [
-            "Reporting Time: 01:15 PM",
-            "Duration: 2 hours",
-            "Entry Closing Time: 01:30 PM.",
-            "Each team should have two students.",
-            "Prelims may be conducted if the number of teams exceeds FIFTEEN.",
-            "Indiscipline in any form will lead to the disqualification of the team.",
-            "Stationery items like pen, pencil etc., are to be brought by the participants.",
-            "Electrical/External sources should not be used during the event.",
-            "Judging will also be based on the fluency, creative thinking, multi-tasking and language skills.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Dr.B.Rathika/ENG"
-        ],
-        "venue": "Civil Seminar Hall",
-        "startTime": "2024-08-17T13:30:00",
-        "endTime": "2024-08-17T15:30:00",
-        "minTeamMembers": 2,
-        "maxTeamMembers": 2
-    },
-    {
-        "eventName": "Yoga",
-        "eventType": "Solo",
-        "rules": [
-            "Reporting Time : 09:15 AM",
-            "Each candidate is to perform one Bending, one Stretching, one Twisting and extra two Asanas of their own.",
-            "Tracksuits & Closed T-shirts must be worn during the competition.",
-            "Shorts & Sleeveless strictly not allowed. Musical Yoga is Allowed.",
-            "Rhythm Posture Complication Flexibility are taken under consideration.",
-            "The Jury\u2019s Decision is Final."
-        ],
-        "facultyInCharge": [
-            "Mrs.AMK.Saliha Banu/PED"
-        ],
-        "venue": "CSE Seminar Hall",
-        "startTime": "2024-08-17T09:30:00",
-        "endTime": "2024-08-17T10:30:00"
-    },
-    {
-        "eventName": "Radio Mirchi",
-        "eventType": "Group",
-        "rules": [
-            "Reporting Time : 10:15 AM",
-            "A team can have a maximum of three members. Single member per team is acceptable.",
-            "Recorded voices or sounds are not allowed.",
-            "Voice and tone modulations of the participants will be considered.",
-            "Participants should have their content relevant to their titles and may show their creative touch during the show.",
-            "The event as a whole has two rounds.",
-            "1st round- participants can prepare their talk with their own topics.",
-            "2nd round- participants will be given a task to find the topic and are expected to talk on the topic.",
-            "Vulgarity and provocative thoughts in the topic or talk will lead to disqualification from the event.",
-            "The Jury\u2019s decision is final.",
-            "JUDGEMENT CRITERIA: 1. Clarity of voice 2. Fluency 3. Originality 4. Communication of the contest theme 5. Sense of humour and presentation."
-        ],
-        "facultyInCharge": [
-            "Mrs.P.Palniladevi Asst. Professor/ECE"
-        ],
-        "venue": "CSE Seminar Hall",
-        "startTime": "2024-08-17T10:30:00",
-        "endTime": "2024-08-17T12:30:00",
-        "minTeamMembers": 1,
-        "maxTeamMembers": 3
-    },
-    {
-        "eventName": "Pixie",
-        "eventType": "Solo",
-        "rules": [
-            "THEME: STREET PHOTOGRAPHY; Stick to the theme.",
-            "Voting starts @9:30 AM;",
-            "Internet images will be disqualified",
-            "Colour correction is allowed but avoid surrealism.",
-            "Best photos will be short-listed and will be displayed on the pixie board.",
-            "Voting will be undertaken.",
-            "Soft copy of the photograph are only considered.",
-            "Submit your photos through mail to  photoclubforu@gmail.com",
-            "(In subject, mention entry for pixie. Mention your name, year, dept, sec, roll no in the body of the email) on or before 10.08.2023",
-            "Attach the properties of the photo in the mail.",
-            "The Jury\u2019s decision is final."
-        ],
-        "facultyInCharge": [
-            "Dr.M.Sureshkumar/PHY"
-        ],
-        "venue": "In front of MCC",
-        "startTime": "2024-08-17T09:30:00",
-        "endTime": "2024-08-17T12:30:00"
-    }
+  {
+    "eventName": "Solo Dance",
+    "eventType": "Solo",
+    "rules": [
+      "Audio track must be in mp3 format.",
+      "Time Duration: 4 mins.",
+      "Whistling, Vulgarity in songs, Moves, Costumes or any sort will lead to disqualification.",
+      "Dangerous properties should not be used.",
+      "Songs must not be highly peppy (Strictly Avoid kuthu songs).",
+      "Innovation and creativity in dance will be given additional credits.",
+      "The dress code must be proper and get approval from the concerned staff.",
+      "Reporting time: 09:10 AM",
+      "Any kind of dance may be performed like classical free style or folk etc.",
+      "Maximum of 20 participants who complete registration corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis to the concerned staff.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.T.Prabaharan/MECH",
+      "Dr.C.Gangalakshmi/ENG"
+    ],
+    "venue": "MCC (Main Auditorium)",
+    "startTime": "2024-08-17T09:15:00",
+    "endTime": "2024-08-17T10:45:00"
+  },
+  {
+    "eventName": "Solo Singing",
+    "eventType": "Solo",
+    "rules": [
+      "Reporting time: 10:00 AM; Students should be in formal wear.",
+      "Time Duration: 3 mins.",
+      "No pre-recordings should be played.",
+      "Only Karaoke is allowed. No other background voices.",
+      "Any style of music can be performed (Folk, Jazz, Melody, Pop, Rap etc.).",
+      "Only Tamil songs are allowed.",
+      "Vulgarity in song selection lyrics or any forms will lead to disqualification.",
+      "Judging criteria will be: Shruthi, Voice, Clarity, Song difficulty, Tempo, Modulations and Improvisations.",
+      "The Jury\u2019s decision is final; Prelims will be conducted if necessary.",
+      "Submit your karaoke to the concerned staff on or before 10.08.2023 by 5 pm in mp3 format (Normalized)."
+    ],
+    "facultyInCharge": [
+      "Mr.Haamidh/CIV",
+      "Dr.Winfred Shashikanth/PHY"
+    ],
+    "venue": "Mech Seminar Hall",
+    "startTime": "2024-08-17T10:00:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Solo Instrumental",
+    "eventType": "Solo",
+    "rules": [
+      "Students should be in formal wear.",
+      "Time Duration: 3 mins",
+      "Reporting Time : 09:10 AM",
+      "Any kind of instruments (Percussions Non-Percussions Keys Strings Wind Instruments) or Multiple instruments (e.g. keyboard + Guitar) can be played.",
+      "Mild Karaoke/ Mild Voiceovers can be used (if needed) upon which the instrument can be played.",
+      "Judging criteria: Song difficulty, Tempo, Rhythm, No. Of flaws, Improvisations.",
+      "Submit your audio track on or before 10.08.2023 by 5 pm in mp3 format (Normalized).",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Mr.Haamidh/CIV",
+      "Dr.Winfred Shashikanth/PHY"
+    ],
+    "venue": "Mech Seminar Hall",
+    "startTime": "2024-08-17T09:00:00",
+    "endTime": "2024-08-17T09:45:00"
+  },
+  {
+    "eventName": "Yoga",
+    "eventType": "Solo",
+    "rules": [
+      "Reporting Time : 09:15 AM",
+      "Each candidate is to perform one Bending, one Stretching, one Twisting and extra two Asanas of their own.",
+      "Tracksuits & Closed T-shirts must be worn during the competition.",
+      "Shorts & Sleeveless strictly not allowed. Musical Yoga is Allowed.",
+      "Rhythm Posture Complication Flexibility are taken under consideration.",
+      "The Jury\u2019s Decision is Final."
+    ],
+    "facultyInCharge": [
+      "Mrs.AMK.Saliha Banu/PED"
+    ],
+    "venue": "CSE Seminar Hall",
+    "startTime": "2024-08-17T09:30:00",
+    "endTime": "2024-08-17T10:30:00"
+  },
+  {
+    "eventName": "Group Dance",
+    "eventType": "Group",
+    "rules": [
+      "No of members: Minimum 4 to Maximum 15.",
+      "Time Duration: 5minutes.",
+      "Reporting time: 10:00 AM.",
+      "Concepts or themes can be used without affecting the dance.",
+      "Whistling, Vulgarity, in Songs, Moves, Costumes or any forms will lead to disqualification.",
+      "Innovation and creativity in dance will be given additional credits.",
+      "Proper approval for dress must be sought from the concerned staff-in-charge earlier.",
+      "Dangerous properties should not be used.",
+      "Songs must not be highly peppy (Strictly Avoid kuthu songs).",
+      "No participation of boys and girls together.",
+      "Maximum no of teams \u2013 12; corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.T.Prabaharan/MECH",
+      "Dr.C.Gangalakshmi/ENG"
+    ],
+    "venue": "MCC (Main Auditorium)",
+    "startTime": "2024-08-17T10:45:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "As You Like It",
+    "eventType": "Solo",
+    "rules": [
+      "Time Duration: 3 mins.",
+      "Reporting Time : 1:30 PM",
+      "Students can exhibit any talents like Juggling, Martial Art, Beat Box, Silambam, Hulahoops, Mimicry, Mono-act etc.",
+      "Singing Dancing Instrumentals are NOT ALLOWED.",
+      "Participants should bring the necessary items.",
+      "The audio track can be played in the background. If so audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized).",
+      "Vulgarity in any form is strictly prohibited.",
+      "The Jury\u2019s decision is final. If necessary prelims will be conducted."
+    ],
+    "facultyInCharge": [
+      "Mr.Viswalingam/ENG"
+    ],
+    "venue": "Mech Seminar Hall",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:00:00"
+  },
+  {
+    "eventName": "Rangoli",
+    "eventType": "Group",
+    "rules": [
+      "Maximum of 3 participants per team.",
+      "Theme : NATIONAL INTEGRITY",
+      "Time Duration: 90 min; Reporting Time: 10:00 am.",
+      "Can use rock salt flowers dhal etc. & Should bring the necessary items.",
+      "Usage of templates are strictly prohibited.",
+      "Judging criteria will be: symmetry colour combination innovation creativity and the neatness of the Rangoli.",
+      "Jury's decision is final."
+    ],
+    "facultyInCharge": [
+      "Mrs. Blessa Binolin Pepsi/IT",
+      "Mrs.P.Madhumitha/ENG"
+    ],
+    "venue": "S&H Block Ground Floor & First Floor Verandah",
+    "startTime": "2024-08-17T10:30:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Drama or Mime",
+    "eventType": "Group",
+    "rules": [
+      "Maximum of 12 members and minimum of 4 per team.",
+      "Time Duration: 8 min.",
+      "Reporting Time : 2:00 PM",
+      "Participants can use either audio track in MP3 format or Oral delivery.",
+      "Drama or Mime could be performed.",
+      "Language \u2013 Tamil & English.",
+      "Whistling, Teasing, Vulgarity in Songs, Dialogues, Costumes or any forms will lead to disqualification.",
+      "Judgement will be based on acting, concept, stage presence, audio, costume etc.",
+      "Participants must bring their own materials.",
+      "First 8 teams who complete corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) will be selected.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Mr.M.Jawahar/EEE"
+    ],
+    "venue": "MCC (Main Auditorium)",
+    "startTime": "2024-08-17T14:15:00",
+    "endTime": "2024-08-17T15:30:00"
+  },
+  {
+    "eventName": "Radio Mirchi",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time : 10:15 AM",
+      "A team can have a maximum of three members. Single member per team is acceptable.",
+      "Recorded voices or sounds are not allowed.",
+      "Voice and tone modulations of the participants will be considered.",
+      "Participants should have their content relevant to their titles and may show their creative touch during the show.",
+      "The event as a whole has two rounds.",
+      "1st round- participants can prepare their talk with their own topics.",
+      "2nd round- participants will be given a task to find the topic and are expected to talk on the topic.",
+      "Vulgarity and provocative thoughts in the topic or talk will lead to disqualification from the event.",
+      "The Jury\u2019s decision is final.",
+      "JUDGEMENT CRITERIA: 1. Clarity of voice 2. Fluency 3. Originality 4. Communication of the contest theme 5. Sense of humour and presentation."
+    ],
+    "facultyInCharge": [
+      "Mrs.P.Palniladevi Asst. Professor/ECE"
+    ],
+    "venue": "CSE Seminar Hall",
+    "startTime": "2024-08-17T10:30:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Sherlock Holmes",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time: 9:10 AM",
+      "It is a detective game.",
+      "Each team should consist of two members.",
+      "Three rounds will be conducted as a part of this event.",
+      "Rounds will be revealed only during the contest.",
+      "Those 3 rounds also include a prelim.",
+      "Participation of girls and boys together is strictly prohibited.",
+      "Jury\u2019s decision will be final."
+    ],
+    "facultyInCharge": [
+      "Mr.J.Anish Jafrin Thilak/MECH"
+    ],
+    "venue": "S & H Block - AV Hall",
+    "startTime": "2024-08-17T09:00:00",
+    "endTime": "2024-08-17T11:00:00"
+  },
+  {
+    "eventName": "Quiz",
+    "eventType": "Group",
+    "rules": [
+      "Venue Reporting Time : 9:45 AM",
+      "Each team should consist of two members. Prelims will be in written format.",
+      "Six teams will be selected from the prelims.",
+      "Topics include history science sports cinema etc.",
+      "Main Event:",
+      "Round -1:",
+      [
+        "Each team gets one question.",
+        "Each question is a pass question.",
+        "Correct answer for direct question gets 10 marks.",
+        "No negative mark for the wrong answer.",
+        "Correct answer for passed question gets 5 marks."
+      ],
+      "Round-2:",
+      [
+        "Each team gets 1 question.",
+        "Each correct answer scores 10 points.",
+        "Wrong answers score a negative mark of -5 points.",
+        "Each question is not a pass question."
+      ],
+      "Round-3:",
+      [
+        "Each team gets one question.",
+        "Correct answer on first clue gets 20 marks.",
+        "No negative marking.",
+        "Correct answer on second clue gets 15 marks.",
+        "Answer on third clue gets 10 marks.",
+        "Answer on last clue gets 5 marks."
+      ],
+      "Round-4:",
+      [
+        "Each team gets one question.",
+        "Only one person will answer the question.",
+        "Should answer rapidly.",
+        "Each question is not a pass question.",
+        "No negative marking.",
+        "Correct answer gets 5 marks."
+      ],
+      "Round-5:",
+      [
+        "Each team gets one question and genre based.",
+        "No negative marking.",
+        "Each question is not a pass question."
+      ],
+      "Jury\u2019s decision will be final."
+    ],
+    "facultyInCharge": [
+      "Mrs.A.Annie Aglin/BT"
+    ],
+    "venue": "S&H Block Seminar Hall",
+    "startTime": "2024-08-17T10:00:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Ezhuthaani",
+    "eventType": "Solo",
+    "rules": [
+      "Theme/Topic : On the Spot",
+      "Reporting Time : 09:10 AM",
+      "Participants need to exhibit their Creative Writing skills (fiction or poetry) in Tamil or English.",
+      "The duration of the event is 1 hour",
+      "The maximum mark for the event is 50 with the following split-up.",
+      "ontent + flow \u2013 15; marks Presentation - 5 marks;",
+      "reativity + relevance to the title - 10 marks; Vocabulary style \u2013 10 marks;",
+      "nglish / Tamil Punctuation \u2013 10 marks.",
+      "All entries will be thoroughly validated.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Mrs.J.Deepalakshmi/MATH"
+    ],
+    "venue": "SHG04 SHG05 (S&H Block Ground Floor Classrooms)",
+    "startTime": "2024-08-17T09:00:00",
+    "endTime": "2024-08-17T11:30:00"
+  },
+  {
+    "eventName": "Lyrical Hunt",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time : 01:15 PM",
+      "Each team should have 3 members",
+      "The Event comprises of 2 segments - Prelims followed by the Main Event.",
+      "Prelims will be conducted and 8 teams will be selected for the main round.",
+      "Prelims - 3 segments; each segment - 10 questions & each question - 1 point.",
+      "Questions for prelims - in the form of jumbled lyric, complete the lyric and guess the song.",
+      "Main round will consist of 5 to 6 segments like Karaoke, Connections, Rapid Fire, Reverse the song, etc.,",
+      "Marks for each segment will be announced on the spot.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Mrs.S.Usha/CIV"
+    ],
+    "venue": "S&H Block Seminar Hall",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:30:00"
+  },
+  {
+    "eventName": "Treasure Hunt",
+    "eventType": "Group",
+    "rules": [
+      "The participating team must have exactly 5 members. There will be no changes in the participants list after initial submission.",
+      "A total of 30 teams (15 Boys teams and 15 Girls teams) will be shortlisted for prelims round based on first come first served.",
+      "Participants should report to venue before 9:10am. Prelims round starts by 9:15am.",
+      "Elimination will be there based on your prelims score.",
+      "15 teams will be shortlisted for the item collection round.",
+      "If you borrow any items within the campus from anybody you must be responsible for returning it.",
+      "Interaction among other teams is strictly prohibited.",
+      "For the final round, 8 teams will be shortlisted.",
+      "The first team to finish the final level will be the winner of the event.",
+      "Final score will be calculated based on the performance from previous levels.",
+      "Be genuine and ethical to solve the clues at each level on your own. Googling the answers is strictly prohibited.",
+      "The Jury\u2019s decision will be final."
+    ],
+    "facultyInCharge": [
+      "Dr.J.Senthil Kumar/ECE"
+    ],
+    "venue": "S&H Seminar Hall \u2013 Prelims at 9.15 am; Finals - In front of AJ Block",
+    "startTime": "2024-08-17T09:15:00",
+    "endTime": "2024-08-17T10:15:00"
+  },
+  {
+    "eventName": "Poster Making",
+    "eventType": "Group",
+    "rules": [
+      "Two members per team. Topic: On the spot",
+      "You will get 90 mins to work on your poster.",
+      "Both paper based and digital graphics are allowed.",
+      "Poster should be made in A3 size.",
+      "For paper based, participants should bring A3 sheets and all other necessary items.",
+      "For digital graphics, participants must bring their laptops with necessary software installed.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.M.Suresh Kumar/PHY"
+    ],
+    "venue": "S&H Block - Computer Lab - I (I Floor)",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:30:00"
+  },
+  {
+    "eventName": "Pixie",
+    "eventType": "Solo",
+    "rules": [
+      "THEME: STREET PHOTOGRAPHY; Stick to the theme.",
+      "Voting starts @9:30 AM;",
+      "Internet images will be disqualified",
+      "Colour correction is allowed but avoid surrealism.",
+      "Best photos will be short-listed and will be displayed on the pixie board.",
+      "Voting will be undertaken.",
+      "Soft copy of the photograph are only considered.",
+      "Submit your photos through mail to  photoclubforu@gmail.com",
+      "(In subject, mention entry for pixie. Mention your name, year, dept, sec, roll no in the body of the email) on or before 10.08.2023",
+      "Attach the properties of the photo in the mail.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.M.Sureshkumar/PHY"
+    ],
+    "venue": "In front of MCC",
+    "startTime": "2024-08-17T09:30:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Cinematrix",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time : 10:45 AM",
+      "Maximum of 8 members per team.",
+      "Theme: SOCIAL WELFARE.",
+      "Duration: 15 min (including title and credits).",
+      "The YouTube link must be sent or shared via Google Drive to  photoclubforu@gmail.com on or before 10.08.2023",
+      "Best films will be shortlisted and intimated before 12.08.2023.",
+      "Cinematography & editing will play as the major score points.",
+      "Avoid help from professional artists.",
+      "The Jury\u2019s decision is final.",
+      "Permission letter from the parents is needed for Participation."
+    ],
+    "facultyInCharge": [
+      "Dr.F.Winfred Shashikanth/PHY"
+    ],
+    "venue": "S & H Block - AV Hall",
+    "startTime": "2024-08-17T11:00:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Divide and Conquer",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time : 01:15 PM",
+      "The team can consist of 5 members; Only 20 teams can register.",
+      "Registration based on first come first serve basis.",
+      "No change of team members is permitted once registration is",
+      "losed.",
+      "There are totally three rounds to finish the game i.e. Prelims,",
+      "ound 1 and the Final round",
+      "Prelims would be conducted on the same day of the event",
+      "aximum of 10 teams will be selected from prelims.",
+      "Time Duration: 2 Hrs (20 min-Prelims, 45 min-Round 1,",
+      "5 min-Final Round)",
+      "Out of 20 teams, 10 Teams will be selected to Round 1 and",
+      "teams to the final round.",
+      "Multiple tasks will be given to the participants in each team",
+      "eparately at each level.",
+      "Marks will be provided on the basis of time of completion of",
+      "he tasks collectively",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Mr.Sebastiyan/LIB"
+    ],
+    "venue": "CSE Seminar Hall",
+    "startTime": "2024-08-17T13:15:00",
+    "endTime": "2024-08-17T15:30:00"
+  },
+  {
+    "eventName": "Monsters’ Muss",
+    "eventType": "Group",
+    "rules": [
+      "Reporting Time: 01:15 PM",
+      "Duration: 2 hours",
+      "Entry Closing Time: 01:30 PM.",
+      "Each team should have two students.",
+      "Prelims may be conducted if the number of teams exceeds FIFTEEN.",
+      "Indiscipline in any form will lead to the disqualification of the team.",
+      "Stationery items like pen, pencil etc., are to be brought by the participants.",
+      "Electrical/External sources should not be used during the event.",
+      "Judging will also be based on the fluency, creative thinking, multi-tasking and language skills.",
+      "The Jury’s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.B.Rathika/ENG"
+    ],
+    "venue": "Civil Seminar Hall",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:30:00"
+  },
+  {
+    "eventName": "Drawing",
+    "eventType": "Solo",
+    "rules": [
+      "Time Duration: 1 hour",
+      "Reporting Time : 01:15 PM",
+      "Drawings should be drawn in an A4 sheet.",
+      "Participants should use only pencil for sketching.",
+      "Participants should bring their own drawing paraphernalia including A4 sheet.",
+      "Topic will be given on the spot.",
+      "The Jury\u2019s decision is final."
+    ],
+    "facultyInCharge": [
+      "Dr.A.Shenbagarajan/AI&DS"
+    ],
+    "venue": "S&H Block - Drawing Hall & SHF16 (First Floor)",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:00:00"
+  }
 ]
