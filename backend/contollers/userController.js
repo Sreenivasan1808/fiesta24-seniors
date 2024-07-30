@@ -291,6 +291,24 @@ const registergroupevent = async (req, res) => {
     console.log(error);
   }
 }
+const myevents = async(req,res) => {
+  const data = await userModel.findOne({Rollno:req.query.Rollno})
+  const eventdata= data.events
+  let events=[]
+  for(let i =0;i<eventdata.length;i++){
+    const data1=await eventModel.findOne({eventName:eventdata[i]})
+    events.push(data1)
+  }
+  if(events)
+  {
+    console.log(events)
+    res.status(200).json(events)
+  }
+  else
+  {
+    res.status(204).json("participated in no event")
+  }
+}
 
 module.exports = {
   Register: Register,
@@ -300,5 +318,6 @@ module.exports = {
   IsRegistered: isEventRegistered,
   RegisterSoloEvent: registerSoloevent,
   RegisterGroupEvent: registergroupevent,
-  refreshToken:refreshToken
+  refreshToken:refreshToken,
+  myevents:myevents
 };

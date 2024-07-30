@@ -6,6 +6,7 @@ router.post("/register", userController.Register);
 router.post("/login", userController.login);
 
 router.use(authenticateToken)
+router.get("/myevents",userController.myevents)
 router.post("/forgetpassword",userController.ForgetPass)
 router.post("/changepassword",userController.ChangePass)
 router.post("/registersoloevent",userController.RegisterSoloEvent)
