@@ -164,7 +164,16 @@ const changePassword = async (req, res) => {
 };
 const registerSoloevent = async (req, res) => {
   try {
-    const data = await userModel.findOne({ Rollno: req.user.Rollno });
+    let data
+    if(req.user.role=="participant")
+    {
+      data = await userModel.findOne({ Rollno: req.user.Rollno });
+    }
+    else
+    {
+      data = await userModel.findOne({ Rollno: req.body.Rollno });
+    }
+ 
     const registeringEvent = req.body.eventName;
     const events1 = data.events;
     let flag = 1;
