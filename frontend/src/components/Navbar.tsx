@@ -6,7 +6,6 @@ import {useRouter} from "next/navigation"
 
 const Navbar = () => {
   const [hasLoggedIn, setHasLoggedIn] = useState(false);
-  const router = useRouter();
   useEffect(() => {
     const checkToken = () => {
       const token = sessionStorage.getItem("accessToken");
@@ -27,14 +26,18 @@ const Navbar = () => {
         <div className="m-2 p-2 flex gap-6">
           <Link href="/CoordinatorDashboard" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Coordinator Dashboard</Link>
           <Link href="/#events" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Events</Link>
-          {hasLoggedIn == false ? 
-          (<>
-            <Link href="/Login" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Login</Link>
-            <Link href="/Register" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Register</Link>
-          </>)
-          :
+
+        {!hasLoggedIn? 
+            <>
+              <Link href="/Login" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Login</Link>
+              <Link href="/Register" className="px-4 rounded-3xl hover:bg-green-400 hover:text-black">Register</Link>
+            </>
+        : 
           <button className="px-4 rounded-3xl hover:bg-green-400 hover:text-black" onClick={logout}>Logout</button>
         }
+       
+          
+        
         </div>
       </nav>
   )

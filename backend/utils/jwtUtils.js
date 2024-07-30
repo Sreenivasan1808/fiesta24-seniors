@@ -7,7 +7,7 @@ const generateTokens = (user) => {
   const accessToken = jwt.sign(
     { Rollno: user.Rollno, role: user.role },
     ACCESS_TOKEN_SECRET,
-    { expiresIn: '15m' } // Access token valid for 15 minutes
+    { expiresIn: '1h' } // Access token valid for 1 hour
   );
 
   const refreshToken = jwt.sign(

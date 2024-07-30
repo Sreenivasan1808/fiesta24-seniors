@@ -1,13 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { axiosClient } from "../services/axiosClient";
 import {setRefreshedTokens} from "../services/axiosClient";
-import { log } from "console";
+import axios from "axios";
 
 const LoginPage = () => {
   const [rollNo, setRollNo] = useState("");
@@ -37,22 +36,35 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e: any) => {
+    e.preventDefault();
     const isValid = validateForm();
     const formData = { Rollno: rollNo, password: password };
     console.log(formData);
     
 
     if (isValid == true) {
-      const response = await axiosClient.post('/userRoutes/login', formData);
-      console.log(response);
-      
-      if (response.status == 200) {
-        router.push("/");
-        // sessionStorage.setItem("AccessToken", response.data.accessToken);
-        setRefreshedTokens(response.data);
-      } else {
-        alert("Something went wrong");
+      console.log("valid")
+      try {
+        const response = await axiosClient.post(`userRoutes/login`, formData, {authorization:false})
+        
+        if (response.status == 200) {
+          console.log("vetri");
+          
+          router.push("/");
+          setRefreshedTokens(response.data);
+        } else {
+          alert("Something went wrong");
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.error("Axios error:", error);
+          alert(`Error: ${error.message}`);
+        } else {
+          console.error("Unexpected error:", error);
+          alert("An unexpected error occurred");
+        }
       }
+      
     }
   };
 

@@ -3,7 +3,7 @@ const groupeventSchema=new mongoose.Schema({
     teamName:{
         type:String
     },
-    event:{
+    EventName:{
         type:String
     },
     members:{

@@ -30,12 +30,12 @@ const Register = async (req, res) => {
   try {
     console.log("Request body:", req.body);
 
-    const studData = await studentModel.findOne({ Rollno: req.body.rollno });
+    const studData = await studentModel.findOne({ Rollno: req.body.Rollno });
     if (studData == null) {
       return res.status(404).json("No such student available");
     }
 
-    const data = await userModel.findOne({ Rollno: req.body.rollno });
+    const data = await userModel.findOne({ Rollno: req.body.Rollno });
     console.log("User data found:", data);
     if (data != null) {
       return res.status(401).json({ message: "User already exists" });
@@ -45,7 +45,7 @@ const Register = async (req, res) => {
     console.log("Encrypted password:", encrypted_password);
 
     const newUser = new userModel({
-      Rollno: req.body.rollno,
+      Rollno: req.body.Rollno,
       password: encrypted_password.content,
       role: "participant",
       detail: studData._id,
@@ -86,8 +86,9 @@ const Login = async (req, res) => {
       password: encrypted_password.content,
       status: "approved",
     });
-    console.log(req.body);
-    console.log(data);
+    // console.log(req.body);
+    // console.log(data);
+    // console.log("Ulle")
     if (data == null) {
       return res.status(401).json("Invalid rollno or password or not approved");
     }
@@ -107,7 +108,7 @@ const Login = async (req, res) => {
 
 const forgetPassword = async (req, res) => {
   try {
-    const rollno = req.body.rollno;
+    const rollno = req.body.Rollno;
     const available1 = await userModel.findOne({ Rollno: rollno });
     if (available1 != null) {
       const data = await studentModel.findOne({ Rollno: rollno });
@@ -141,7 +142,7 @@ const changePassword = async (req, res) => {
   try {
     const current_encrypted = encrypt(req.body.currentpassword);
     const data = await userModel.findOne({
-      Rollno: req.body.rollno,
+      Rollno: req.body.Rollno,
       password: current_encrypted.content,
     });
     if (data == null) {
@@ -149,7 +150,7 @@ const changePassword = async (req, res) => {
     } else {
       const new_encrypted = encrypt(req.body.newpassword);
       const update = await userModel.updateOne(
-        { Rollno: req.body.rollno },
+        { Rollno: req.body.Rollno },
         { $set: { password: new_encrypted.content } }
       );
       return res.status(200).json("Success");
@@ -196,12 +197,12 @@ const registerSoloevent = async (req, res) => {
       res.status(204).json("cannot participate");
     } else {
       const newsoloevent = new soloeventModel({
-        Rollno: req.body.rollno,
+        Rollno: req.user.Rollno,
         EventName: registeringEvent,
       });
       const s = await newsoloevent.save();
       const data1 = await userModel.updateOne(
-        { Rollno: req.body.rollno },
+        { Rollno: req.user.Rollno },
         { $push: { events: registeringEvent } }
       );
       res.status(200).json("can participate");
@@ -212,9 +213,6 @@ const registerSoloevent = async (req, res) => {
 };
 const isEventRegistered = async (req, res) => {
   const data = await userModel.findOne({ Rollno: req.user.Rollno });
-  console.log(req.user);
-  console.log(req.query.eventName);
-  console.log(data);
   const events = data.events;
   console.log(events)
   if (events.includes(req.query.eventName)) {
