@@ -8,6 +8,9 @@ const groupeventSchema=new mongoose.Schema({
     },
     members:{
         type:[{type:String}]
+    },
+    teamLeader:{
+        type:String
     }
 })
 module.exports=mongoose.model('groupevent',groupeventSchema)

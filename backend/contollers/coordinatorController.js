@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 const { send_mail } = require("../mailer"); // Adjust the import based on your file structure
 const userModel = require("../models/user");
 const studentModel = require("../models/studentmodel");
+const {excelDownloader}=require("../excel")
 dotenv.config();
 
 const accept = async (req, res) => {
@@ -10,15 +11,11 @@ const accept = async (req, res) => {
     console.log(participantMail);
     // Update the user's status to "approved"
     const result = await studentModel.findOne({ mail: participantMail });
-    const update = await userModel.updateOne(
-      { detail: result._id },
-      { $set: { status: "approved" } }
-    );
+    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "approved" } });
     console.log(result._id);
-    console.log(update);
 
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "User not found" });
+    if (!result) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
     // Send an approval email
@@ -36,16 +33,13 @@ const accept = async (req, res) => {
 const reject = async (req, res) => {
   try {
     const participantMail = req.body.mail;
-    console.log(participantMail)
     const result = await studentModel.findOne({ mail: participantMail });
-    // Update the user's status to "rejected"
-    const update = await userModel.updateOne(
-      { detail: result._id },
-      { $set: { status: "rejected" } }
-    );
 
-    if (result.matchedCount === 0) {
-      return res.status(404).json({ message: "User not found" });
+    // Update the user's status to "rejected"
+    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "rejected" } });
+
+    if (!result) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
     // Send a rejection email
@@ -63,16 +57,14 @@ const reject = async (req, res) => {
 const acceptall = async (req, res) => {
   try {
     // Update all users' statuses to "approved"
-    const result = await userModel.find({ status: { $ne: "approved" } });
-    console.log(result);
+    const result = await userModel.find({ status: { $eq: "pending" } });
 
     const message = 'Dear participant, your registration has been approved by the coordinator';
     for (let i = 0; i < result.length; i++) {
-      // console.log(typeof (result[i].admissionNumber));
-      const data = await studentModel.findOne({ _id: result[i].detail });
+      const data = await studentModel.findOne({ Rollno: result[i].Rollno });
       participantMail = data.mail;
       const update = await userModel.updateMany(
-        { admission: result[i].admissionNumber }, // Update only those who are not already approved
+        { Rollno: result[i].Rollno }, // Update only those who are not already approved
         { $set: { status: "approved" } }
       );
 
@@ -120,17 +112,9 @@ const dashboard = async (req, res) => {
   }
 };
 
-
-const summa = ()=>{
-  const date1= new Date("2024-08-17T09:15:00")
-  const date2= new Date("2024-08-17T10:45:00")
-  
-  console.log(date1<date1)
-}
-summa()
 module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
-  Dashboard: dashboard,
+  Dashboard: dashboard
 };
