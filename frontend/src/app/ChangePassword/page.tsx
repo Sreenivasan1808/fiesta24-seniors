@@ -1,23 +1,34 @@
 "use client";
-import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
-import { motion } from "framer-motion";
-import {axiosClient} from "../services/axiosClient";
-import { useRouter } from "next/navigation";
-import { IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { axiosClient } from "../services/axiosClient";
 
-const RegisterPage = () => {
-  const [rollNo, setRollNo] = useState("");
+const ChangePassword = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [rollNoError, setRollNoError] = useState("");
+  const [showCurrPassword, setShowCurrPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const validateForm = () => {
+    if (confirmPassword != password) {
+      setConfirmPasswordError(
+        "Confirm password and your password must be same"
+      );
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async () => {
+    validateForm();
+    const response = await axiosClient.post("", {currentpassword: currentPassword, password: password})
+  };
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -25,79 +36,14 @@ const RegisterPage = () => {
   const handleClickShowConfirmPassword = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-
-  const router = useRouter();
-
-  const validateForm = (formData: {
-    Rollno: string;
-    password: string;
-    confirmPassword: string;
-  }) => {
-    let isValid = true;
-    if (!formData.Rollno || formData.Rollno.trim().length == 0) {
-      setRollNoError("Please enter your roll no (eg: 21BCS166)");
-      isValid = false;
-    }
-    if (!formData.password || formData.password.trim().length == 0) {
-      setPasswordError("Please enter a valid password");
-      isValid = false;
-    }
-    if (
-      !formData.confirmPassword ||
-      formData.confirmPassword.trim().length == 0
-    ) {
-      setConfirmPasswordError("Please enter a valid password");
-      isValid = false;
-    } else if (formData.confirmPassword != formData.password) {
-      setConfirmPasswordError(
-        "Confirm password and your password must be same"
-      );
-      isValid = false;
-    }
-
-    return isValid;
+  const handleClickShowCurrPassword = () => {
+    setShowCurrPassword(!showCurrPassword);
   };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    // console.log(process.env.NEXT_PUBLIC_SERVER_URL);
-    const formData = {
-      Rollno: rollNo,
-      password: password,
-      confirmPassword: confirmPassword,
-    };
-    const isValid = validateForm(formData);
-    if (isValid) {
-      console.log(formData);
-      setConfirmPassword("");
-      setPassword("");
-      setRollNo("");
-      setConfirmPasswordError("");
-      setRollNoError("");
-      setConfirmPasswordError("");
-      
-      const response = await axiosClient.post(`userRoutes/register`, {...formData}, { Authorization: false });
-      if (response.status == 200) {
-        alert(
-          "Registered successfully. Please wait until your account is verified by our coordinator"
-        );
-      } else if(response.status == 205){
-        alert("The Roll no doesn't exist");
-        console.log(response.data);
-        
-      }else if(response.status == 201){
-        alert("You have already registered");
-      }else{
-        alert("Sorry! Something went wrong");
-      }
-    }
-  };
-
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen shadow-xl">
+      <div className="flex justify-center items-center min-h-screen shadow-2xl min-w-fit p-4">
         <div
-          className="rounded-lg"
+          className="rounded-2xl"
           style={{ background: "#f5f5f5", color: "#000" }}
         >
           <form
@@ -105,26 +51,36 @@ const RegisterPage = () => {
             onSubmit={handleSubmit}
           >
             <h2 className="text-emerald-950 text-center text-3xl mb-5">
-              Register
+              Change Password
             </h2>
             {/* <label htmlFor="adminNo" className="mt-5 mx-2 text-gray-800">
               Admission Number
             </label> */}
             <TextField
               required
-              id="rollNo"
-              label="Roll Number"
+              id="currpass"
+              label="Current Password"
               variant="outlined"
+              type={showCurrPassword ? "text" : "password"}
               color="success"
-              value={rollNo}
+              value={currentPassword}
               onChange={(e) => {
-                setRollNo(e.target.value);
-                setRollNoError("");
+                setCurrentPassword(e.target.value);
               }}
               sx={{ marginTop: "2em" }}
-              error={rollNoError.length > 0}
-              helperText={rollNoError}
-              
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowCurrPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             {/* <label htmlFor="pass" className="mt-3 mx-2 text-gray-800">
               Password
@@ -132,7 +88,7 @@ const RegisterPage = () => {
             <TextField
               id="pass"
               required
-              label="Password"
+              label="New Password"
               type={showPassword ? "text" : "password"}
               color="success"
               onChange={(e) => {
@@ -198,7 +154,6 @@ const RegisterPage = () => {
                 color="success"
                 component={motion.button}
                 whileTap={{ scale: 0.85 }}
-                
               >
                 Register
               </Button>
@@ -210,4 +165,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default ChangePassword;

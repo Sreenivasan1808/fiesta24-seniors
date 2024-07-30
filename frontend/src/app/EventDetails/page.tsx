@@ -112,7 +112,6 @@ const EventDetails = () => {
   };
   // console.log(eventName);
   const checkRegistrationStatus = async () => {
-    
     const response = await axiosClient.get(
       `userRoutes/isregistered`,
       { params: { eventName: eventName } } //need to send rollno
@@ -265,12 +264,12 @@ const EventDetails = () => {
                   You have already registered for this event
                 </Alert>
               )
+            ) : role == "coordinator" ? (
+              <></>
             ) : (
-              <Alert
-                  severity="error"
-                  variant="filled"
-                  className="rounded-2xl"
-                >You can't register until your account is registered and approved</Alert>
+              <Alert severity="error" variant="filled" className="rounded-2xl">
+                You can't register until your account is registered and approved
+              </Alert>
             )}
 
             <Modal

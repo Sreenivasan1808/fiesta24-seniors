@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, Modal, TextField, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -20,7 +20,25 @@ const LoginPage = () => {
     setShowPassword(!showPassword);
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const router = useRouter();
+
+  const handleForgotPassword = async () => {
+    setModalOpen(false);
+    try {
+      const response = await axiosClient.post("userRoutes/forgetpassword", {Rollno: rollNo});
+      if(response.status == 200){
+        alert("Please check your mail address to get your new password");
+      }else if(response.status == 404){
+        alert("Invalid Roll No");
+      }
+    } catch (error) {
+      alert("Server error");
+      console.error(error);
+      
+    }
+  } 
 
   const validateForm = () => {
     let isValid = true;
@@ -52,8 +70,8 @@ const LoginPage = () => {
           
           router.push("/");
           setRefreshedTokens(response.data);
-        } else {
-          alert("Something went wrong");
+        } else if(response.status == 401){
+          alert(response.data);
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -66,6 +84,20 @@ const LoginPage = () => {
       }
       
     }
+  };
+
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #020202",
+    borderRadius: "1.5rem",
+    boxShadow: 24,
+    padding: 4,
   };
 
   return (
@@ -150,6 +182,7 @@ const LoginPage = () => {
                 Signup
               </Button>
             </div>
+            <p className="text-base text-green-800 text-center hover:cursor-pointer hover:text-green-600" onClick={() =>  {setModalOpen(true);}}>Forgot password? Click here</p>
             {/* <Link
               className="flex justify-center text-blue-400 my-2"
               href="/Register"
@@ -159,6 +192,35 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
+
+      <Modal
+              open={modalOpen}
+              onClose={() => {
+                setModalOpen(false);
+              }}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                sx={{
+                  ...style,
+                  width: 500,
+                  transform: "translate(-50%, -50%)",
+                  maxHeight: "90vh",
+                }}
+                className="flex flex-col justify-center items-center p-4 min-w-72"
+              >
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  className={"text-center m-2"}
+                  
+                > Forgot Password</Typography>
+                <TextField className="m-2" variant="outlined" color="success" label="Roll No" onChange={(e) => {setRollNo(e.target.value)}}/>
+                <Button onClick={handleForgotPassword} variant="contained" color="success" sx={{borderRadius: "2rem"}}>Submit</Button>
+              </Box>
+            </Modal>
     </>
   );
 };
