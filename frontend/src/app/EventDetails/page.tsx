@@ -116,7 +116,7 @@ const EventDetails = () => {
       `userRoutes/isregistered`,
       { params: { eventName: eventName } } //need to send rollno
     );
-    console.log(response);
+    console.log(response.status);
 
     if (response.status == 201) {
       setIsRegistered(false);
@@ -150,10 +150,10 @@ const EventDetails = () => {
         });
         break;
       }
-      let r = localStorage.getItem("role");
-      if (r) setRole(r);
-      checkRegistrationStatus();
     }
+    let r = localStorage.getItem("role");
+    if (r) setRole(r);
+    checkRegistrationStatus();
   }, [eventName]);
 
   // console.log(eventDetails);
@@ -264,12 +264,12 @@ const EventDetails = () => {
                   You have already registered for this event
                 </Alert>
               )
+            ) : role == "coordinator" ? (
+              <></>
             ) : (
-              <Alert
-                  severity="error"
-                  variant="filled"
-                  className="rounded-2xl"
-                >You can't register until your account is registered and approved</Alert>
+              <Alert severity="error" variant="filled" className="rounded-2xl">
+                You can't register until your account is registered and approved
+              </Alert>
             )}
 
             <Modal

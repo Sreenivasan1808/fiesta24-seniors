@@ -44,7 +44,7 @@ const download = async (req, res) => {
             console.log(participants)
             for (let i = 0; i < participants.length; i++) {
                 const teamMembers = participants[i].members;
-                const teamName=participants[i].teamName
+                const teamName=participants[i].teamName;
                 for(let j=0;j<teamMembers.length;j++)
                 {
                     const rollno=teamMembers[j]

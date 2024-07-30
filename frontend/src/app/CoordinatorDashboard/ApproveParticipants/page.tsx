@@ -45,7 +45,7 @@ const ApproveParticipants = () => {
     try {
       const response = await axiosClient.post(
         `coordinatorRoutes/accept`,
-        { mail: e }
+        { Rollno: e }
       );
       if (response.status == 200) {
         alert("Approved user");
@@ -158,7 +158,7 @@ const ApproveParticipants = () => {
                         <Button
                           color="success"
                           variant="outlined"
-                          onClick={() => handleApproval(item.mail)}
+                          onClick={() => handleApproval(item.Rollno)}
                           className="mx-0.5"
                         >
                           <DoneIcon />

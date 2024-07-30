@@ -17,6 +17,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import axios from "axios";
+import { axiosClient } from "@/app/services/axiosClient";
 
 const RegisterEvent = () => {
   const [eventType, setEventType] = useState("");
@@ -59,18 +60,18 @@ const RegisterEvent = () => {
     let api;
     if (eventType == "Group") {
       console.log("Group register");
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
+      api = `userRoutes/registergroupevent`;
       postData = {
         eventName: eventName,
         teamName: teamName,
         teamMembers: teamMembers,
       };
     } else {
-      api = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
-      postData = { eventName: eventName };
+      api = `userRoutes/registersoloevent`;
+      postData = { Rollno: soloRollNo, eventName: eventName };
     }
     try {
-      const response = await axios.post(api, postData);
+      const response = await axiosClient.post(api, postData);
       if (response.status == 200) {
         setModalTitle("Success");
         setModalText("You have successfully registered");

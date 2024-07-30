@@ -4,10 +4,10 @@ const userController = require('../contollers/userController'); // Ensure the pa
 const authenticateToken = require('../middleware/authMiddleware');
 router.post("/register", userController.Register);
 router.post("/login", userController.login);
+router.post("/forgetpassword",userController.ForgetPass)
 
 router.use(authenticateToken)
 router.get("/myevents",userController.myevents)
-router.post("/forgetpassword",userController.ForgetPass)
 router.post("/changepassword",userController.ChangePass)
 router.post("/registersoloevent",userController.RegisterSoloEvent)
 router.post("/registergroupevent",userController.RegisterGroupEvent)

@@ -31,13 +31,13 @@ const Register = async (req, res) => {
     console.log("Request body:", req.body);
     const studData = await studentModel.findOne({ Rollno: req.body.Rollno });
     if (studData == null) {
-      return res.status(404).json("No such student available");
+      return res.status(205).json("No such student available");
     }
 
     const data = await userModel.findOne({ Rollno: req.body.Rollno });
     console.log("User data found:", data);
     if (data != null) {
-      return res.status(401).json({ message: "User already exists" });
+      return res.status(201).json({ message: "User already exists" });
     }
 
     const encrypted_password = encrypt(req.body.password);
