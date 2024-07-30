@@ -80,6 +80,7 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
+    console.log("hi")
     const encrypted_password = encrypt(req.body.password);
     const data = await userModel.findOne({
       Rollno: req.body.Rollno,

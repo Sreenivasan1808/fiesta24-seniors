@@ -40,7 +40,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     const isValid = validateForm();
-    const formData = { rollNo: rollNo, password: password };
+    const formData = { Rollno: rollNo, password: password };
     console.log(formData);
     
 

@@ -1,7 +1,5 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/Login/page": "app/Login/page.js",
-  "/Register/page": "app/Register/page.js",
-  "/CoordinatorDashboard/ApproveParticipants/page": "app/CoordinatorDashboard/ApproveParticipants/page.js",
-  "/CoordinatorDashboard/page": "app/CoordinatorDashboard/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
