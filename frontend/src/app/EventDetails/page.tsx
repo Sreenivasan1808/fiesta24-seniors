@@ -265,7 +265,11 @@ const EventDetails = () => {
                 </Alert>
               )
             ) : (
-              <>You can't register</>
+              <Alert
+                  severity="error"
+                  variant="filled"
+                  className="rounded-2xl"
+                >You can't register until your account is registered and approved</Alert>
             )}
 
             <Modal

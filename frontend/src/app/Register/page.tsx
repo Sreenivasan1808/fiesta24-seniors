@@ -29,12 +29,12 @@ const RegisterPage = () => {
   const router = useRouter();
 
   const validateForm = (formData: {
-    rollno: string;
+    Rollno: string;
     password: string;
     confirmPassword: string;
   }) => {
     let isValid = true;
-    if (!formData.rollno || formData.rollno.trim().length == 0) {
+    if (!formData.Rollno || formData.Rollno.trim().length == 0) {
       setRollNoError("Please enter your roll no (eg: 21BCS166)");
       isValid = false;
     }
@@ -62,7 +62,7 @@ const RegisterPage = () => {
     e.preventDefault();
     console.log(process.env.NEXT_PUBLIC_SERVER_URL);
     const formData = {
-      rollno: rollNo,
+      Rollno: rollNo,
       password: password,
       confirmPassword: confirmPassword,
     };
@@ -81,8 +81,14 @@ const RegisterPage = () => {
         alert(
           "Registered successfully. Please wait until your account is verified by our coordinator"
         );
-      } else {
-        alert(response.data);
+      } else if(response.status == 205){
+        alert("The Roll no doesn't exist");
+        console.log(response.data);
+        
+      }else if(response.status == 201){
+        alert("You have already registered");
+      }else{
+        alert("Sorry! Something went wrong");
       }
     }
   };

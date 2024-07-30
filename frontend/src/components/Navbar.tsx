@@ -16,6 +16,7 @@ const Navbar = () => {
     const intervalId = setInterval(checkToken, 1000); // Check every second
 
     return () => clearInterval(intervalId); // Cleanup interval on unmount
+    
   }, []);
 
   return (

@@ -10,6 +10,8 @@ import {
 import React, { useState } from "react";
 import eventsJson from "../../public/events.json";
 import axios from "axios";
+import { saveAs } from 'file-saver';
+import { axiosClient } from "@/app/services/axiosClient";
 
 const DownloadParticipantList = () => {
   const [eventType, setEventType] = useState("");
@@ -23,7 +25,10 @@ const DownloadParticipantList = () => {
 
   const handleDownloadList = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/`, {params: {eventType: eventType, eventName: eventName}})
+      const response = await axiosClient.get(`coordinatorRoutes/download`, {params: {eventType: eventType, eventName: eventName}, responseType: "blob"})
+      console.log(response.status);
+      const blob = new Blob([response.data], { type: response.headers['content-type'] });
+      saveAs(blob, `${eventName} participants.xlsx`);
     } catch (error) {
       
     }

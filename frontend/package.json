@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.2",
     "axios": "^1.7.2",
+    "file-saver": "^2.0.5",
     "framer-motion": "^11.3.7",
     "next": "14.2.5",
     "react": "^18",
