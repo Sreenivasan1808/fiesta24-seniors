@@ -28,7 +28,7 @@ const Navbar = () => {
         <img src="" alt="Fiesta'24" />
       </Link>
       <div className="m-2 p-2 flex gap-6">
-        {role == "coordinator" ? (
+        {role == "coordinator" && hasLoggedIn ? (
           <Link
             href="/CoordinatorDashboard"
             className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
@@ -62,12 +62,12 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link
+            {role == "participant" ? <Link
               href="/ChangePassword"
               className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
             >
               Change Password
-            </Link>
+            </Link>: <></> }
             <button
               className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
               onClick={() => {

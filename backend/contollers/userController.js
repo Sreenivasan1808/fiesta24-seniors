@@ -44,6 +44,7 @@ const Register = async (req, res) => {
     const encrypted_password = encrypt(req.body.password);
     console.log("Encrypted password:", encrypted_password);
 
+    
     const newUser = new userModel({
       Rollno: req.body.Rollno,
       password: encrypted_password.content,
@@ -173,7 +174,7 @@ const registerSoloevent = async (req, res) => {
     {
       data = await userModel.findOne({ Rollno: req.body.Rollno });
     }
- 
+    console.log(data);
     const registeringEvent = req.body.eventName;
     const events1 = data.events;
     let flag = 1;
@@ -207,12 +208,12 @@ const registerSoloevent = async (req, res) => {
       res.status(204).json("cannot participate");
     } else {
       const newsoloevent = new soloeventModel({
-        Rollno: req.user.Rollno,
+        Rollno: data.Rollno,
         EventName: registeringEvent,
       });
       const s = await newsoloevent.save();
       const data1 = await userModel.updateOne(
-        { Rollno: req.user.Rollno },
+        { Rollno: data.Rollno },
         { $push: { events: registeringEvent } }
       );
       res.status(200).json("can participate");
