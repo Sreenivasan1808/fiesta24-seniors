@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import EventsPanel from "@/components/EventsPanel";
 import { Rock_Salt } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const rock_salt = Rock_Salt({
   weight: "400",
@@ -9,65 +10,99 @@ const rock_salt = Rock_Salt({
   variable: "--font-rock",
 })
 
+const dropInVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
 export default function Home() {
+  const fiestaText = "Fiesta '24";
+  const router = useRouter();
   return (
     <main className="font-josefin">
       <section
-        className="flex min-h-screen w-full flex-col items-center justify-between p-24"
-        style={{backgroundImage: 'radial-gradient(170% 125% at 50% 0%, #1e293b 50%, #184a2f)'}}
-        id="hero"
-        
+      className="flex min-h-screen w-full flex-col items-start justify-between p-24"
+      style={{ backgroundImage: 'radial-gradient(170% 125% at 50% 0%, #1e293b 50%, #184a2f)' }}
+      id="hero"
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        <motion.div>
-          {/* <motion.img
-            src="/curtain.png"
-            alt=""
-            style={{
-              position: "absolute",
-              top: "7%",
-              left: "0%",
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              x: curtainX 
-            }}
-            initial={{ scale: 1 }}
-            animate={{ scale: 1.5 }}
-          /> */}
-          <motion.h1
-            style={{ fontSize: "11rem", color:"rgb(210,210,210)", textShadow: "0px 0px 25px rgb(0, 200, 0)"}}
-            className={rock_salt.className}
-            initial={{ opacity: 0, x: -80 }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                ease: [0.5, 0.5, 0.5, 0.5],
-                duration: 0.8,
-                staggerChildren: 1.5,
-              },
-            }}
+        {/* Uncomment and adjust the following code if you want to include the image animation */}
+        {/* <motion.img
+          src="/curtain.png"
+          alt=""
+          style={{
+            position: "absolute",
+            top: "7%",
+            left: "0%",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+          initial={{ x: '-100%' }}
+          animate={{ x: '0%' }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        /> */}
+        <motion.h1
+          style={{ fontSize: "8rem", color: "rgb(210,210,210)", textShadow: "0px 0px 25px rgb(0, 200, 0)"}}
+          className={rock_salt.className}
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.2 }}
+        >
+          {fiestaText.split('').map((char, index) => (
+            <motion.span key={index} variants={dropInVariants}>
+              {char}
+            </motion.span>
+          ))}
+        </motion.h1>
+        <motion.p
+          className="text-5xl text-left "
+          style={{ color: "rgb(200, 200, 200)" }}
+          initial={{ opacity: 0, x: 80 }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            transition: {
+              ease: [0.5, 0.5, 0.5, 0.5],
+              duration: 0.8,
+              staggerChildren: 1.5,
+            },
+          }}
+        >
+          17 Aug 2024
+        </motion.p>
+        <motion.div
+          className="flex justify-start mt-8"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            transition: {
+              duration: 0.6,
+              ease: "easeInOut",
+              delay: 0.5,
+            },
+          }}
+        >
+          <motion.button
+            className="px-6 py-3 bg-green-600 text-white rounded-lg mt-2"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => router.push("/#events")}
           >
-            Fiesta '24
-          </motion.h1>
-          <motion.p
-            className='text-5xl text-right mt-4'
-            style={{ color: "rgb(200, 200, 200)" }}
-            initial={{ opacity: 0, x: 80 }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                ease: [0.5, 0.5, 0.5, 0.5],
-                duration: 0.8,
-                staggerChildren: 1.5,
-              },
-            }}
-          >
-            17 Aug 2024
-          </motion.p>
+            Join Events
+          </motion.button>
         </motion.div>
-      </section>
+      </motion.div>
+    </section>
       <div
         id="events"
         className="min-h-screen w-full flex flex-col justify-center items-center"

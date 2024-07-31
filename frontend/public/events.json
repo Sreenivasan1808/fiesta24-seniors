@@ -15,10 +15,7 @@
       "Maximum of 20 participants who complete registration corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis to the concerned staff.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.T.Prabaharan/MECH",
-      "Dr.C.Gangalakshmi/ENG"
-    ],
+    "facultyInCharge": ["Dr.T.Prabaharan/MECH", "Dr.C.Gangalakshmi/ENG"],
     "venue": "MCC (Main Auditorium)",
     "startTime": "2024-08-17T09:15:00",
     "endTime": "2024-08-17T10:45:00"
@@ -38,10 +35,7 @@
       "The Jury\u2019s decision is final; Prelims will be conducted if necessary.",
       "Submit your karaoke to the concerned staff on or before 10.08.2023 by 5 pm in mp3 format (Normalized)."
     ],
-    "facultyInCharge": [
-      "Mr.Haamidh/CIV",
-      "Dr.Winfred Shashikanth/PHY"
-    ],
+    "facultyInCharge": ["Mr.Haamidh/CIV", "Dr.Winfred Shashikanth/PHY"],
     "venue": "Mech Seminar Hall",
     "startTime": "2024-08-17T10:00:00",
     "endTime": "2024-08-17T12:30:00"
@@ -59,10 +53,7 @@
       "Submit your audio track on or before 10.08.2023 by 5 pm in mp3 format (Normalized).",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Mr.Haamidh/CIV",
-      "Dr.Winfred Shashikanth/PHY"
-    ],
+    "facultyInCharge": ["Mr.Haamidh/CIV", "Dr.Winfred Shashikanth/PHY"],
     "venue": "Mech Seminar Hall",
     "startTime": "2024-08-17T09:00:00",
     "endTime": "2024-08-17T09:45:00"
@@ -78,9 +69,7 @@
       "Rhythm Posture Complication Flexibility are taken under consideration.",
       "The Jury\u2019s Decision is Final."
     ],
-    "facultyInCharge": [
-      "Mrs.AMK.Saliha Banu/PED"
-    ],
+    "facultyInCharge": ["Mrs.AMK.Saliha Banu/PED"],
     "venue": "CSE Seminar Hall",
     "startTime": "2024-08-17T09:30:00",
     "endTime": "2024-08-17T10:30:00"
@@ -102,13 +91,12 @@
       "Maximum no of teams \u2013 12; corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) on first come first served basis.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.T.Prabaharan/MECH",
-      "Dr.C.Gangalakshmi/ENG"
-    ],
+    "facultyInCharge": ["Dr.T.Prabaharan/MECH", "Dr.C.Gangalakshmi/ENG"],
     "venue": "MCC (Main Auditorium)",
     "startTime": "2024-08-17T10:45:00",
-    "endTime": "2024-08-17T12:30:00"
+    "endTime": "2024-08-17T12:30:00",
+    "minTeamMembers": 4,
+    "maxTeamMembers": 15
   },
   {
     "eventName": "As You Like It",
@@ -123,12 +111,34 @@
       "Vulgarity in any form is strictly prohibited.",
       "The Jury\u2019s decision is final. If necessary prelims will be conducted."
     ],
-    "facultyInCharge": [
-      "Mr.Viswalingam/ENG"
-    ],
+    "facultyInCharge": ["Mr.Viswalingam/ENG"],
     "venue": "Mech Seminar Hall",
     "startTime": "2024-08-17T13:30:00",
     "endTime": "2024-08-17T15:00:00"
+  },
+  {
+    "eventName": "Potpourri",
+    "eventType": "Solo",
+    "rules": [
+      "Reporting Time: 01:15 PM",
+      "Participants prepare their talk with the given topic (One round)",
+      "Duration: 4 minutes; a reminder will be given at the 3rd minute.",
+      "Topics are:",
+      [
+        "திரையில் மறையும் நிஜங்கள்",
+        "கூண்டுப் பறவையின் சிறகு",
+        "உன் விரலோடு உன் நாடு"
+      ],
+      "No paper or material allowed during the speech.",
+      "Participants should have their content and may show their creative touch.",
+      "Vulgar or provocative content will lead to immediate disqualification.",
+      "The Jury’s decision is final",
+      "Judgement Criteria: Clarity of voice, Fluency, Content and Creativity,  Posture plus gesture."
+    ],
+    "facultyInCharge": ["Mr.G. Manoj Kumar/MECH"],
+    "venue": "S & H Block - AV Hall",
+    "startTime": "2024-08-17T13:30:00",
+    "endTime": "2024-08-17T15:30:00"
   },
   {
     "eventName": "Rangoli",
@@ -142,13 +152,12 @@
       "Judging criteria will be: symmetry colour combination innovation creativity and the neatness of the Rangoli.",
       "Jury's decision is final."
     ],
-    "facultyInCharge": [
-      "Mrs. Blessa Binolin Pepsi/IT",
-      "Mrs.P.Madhumitha/ENG"
-    ],
+    "facultyInCharge": ["Mrs. Blessa Binolin Pepsi/IT", "Mrs.P.Madhumitha/ENG"],
     "venue": "S&H Block Ground Floor & First Floor Verandah",
     "startTime": "2024-08-17T10:30:00",
-    "endTime": "2024-08-17T12:30:00"
+    "endTime": "2024-08-17T12:30:00",
+    "minTeamMembers": 1,
+    "maxTeamMembers": 3
   },
   {
     "eventName": "Drama or Mime",
@@ -166,12 +175,12 @@
       "First 8 teams who complete corrected audio track submission on or before 10.08.2023 by 5 pm in mp3 format (Normalized) will be selected.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Mr.M.Jawahar/EEE"
-    ],
+    "facultyInCharge": ["Mr.M.Jawahar/EEE"],
     "venue": "MCC (Main Auditorium)",
     "startTime": "2024-08-17T14:15:00",
-    "endTime": "2024-08-17T15:30:00"
+    "endTime": "2024-08-17T15:30:00",
+    "minTeamMembers": 4,
+    "maxTeamMembers": 12
   },
   {
     "eventName": "Radio Mirchi",
@@ -189,12 +198,12 @@
       "The Jury\u2019s decision is final.",
       "JUDGEMENT CRITERIA: 1. Clarity of voice 2. Fluency 3. Originality 4. Communication of the contest theme 5. Sense of humour and presentation."
     ],
-    "facultyInCharge": [
-      "Mrs.P.Palniladevi Asst. Professor/ECE"
-    ],
+    "facultyInCharge": ["Mrs.P.Palniladevi Asst. Professor/ECE"],
     "venue": "CSE Seminar Hall",
     "startTime": "2024-08-17T10:30:00",
-    "endTime": "2024-08-17T12:30:00"
+    "endTime": "2024-08-17T12:30:00",
+    "minTeamMembers": 1,
+    "maxTeamMembers": 3
   },
   {
     "eventName": "Sherlock Holmes",
@@ -209,12 +218,12 @@
       "Participation of girls and boys together is strictly prohibited.",
       "Jury\u2019s decision will be final."
     ],
-    "facultyInCharge": [
-      "Mr.J.Anish Jafrin Thilak/MECH"
-    ],
+    "facultyInCharge": ["Mr.J.Anish Jafrin Thilak/MECH"],
     "venue": "S & H Block - AV Hall",
     "startTime": "2024-08-17T09:00:00",
-    "endTime": "2024-08-17T11:00:00"
+    "endTime": "2024-08-17T11:00:00",
+    "minTeamMembers": 2,
+    "maxTeamMembers": 2
   },
   {
     "eventName": "Quiz",
@@ -266,12 +275,12 @@
       ],
       "Jury\u2019s decision will be final."
     ],
-    "facultyInCharge": [
-      "Mrs.A.Annie Aglin/BT"
-    ],
+    "facultyInCharge": ["Mrs.A.Annie Aglin/BT"],
     "venue": "S&H Block Seminar Hall",
     "startTime": "2024-08-17T10:00:00",
-    "endTime": "2024-08-17T12:30:00"
+    "endTime": "2024-08-17T12:30:00",
+    "minTeamMembers": 2,
+    "maxTeamMembers": 2
   },
   {
     "eventName": "Ezhuthaani",
@@ -288,9 +297,7 @@
       "All entries will be thoroughly validated.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Mrs.J.Deepalakshmi/MATH"
-    ],
+    "facultyInCharge": ["Mrs.J.Deepalakshmi/MATH"],
     "venue": "SHG04 SHG05 (S&H Block Ground Floor Classrooms)",
     "startTime": "2024-08-17T09:00:00",
     "endTime": "2024-08-17T11:30:00"
@@ -309,12 +316,12 @@
       "Marks for each segment will be announced on the spot.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Mrs.S.Usha/CIV"
-    ],
+    "facultyInCharge": ["Mrs.S.Usha/CIV"],
     "venue": "S&H Block Seminar Hall",
     "startTime": "2024-08-17T13:30:00",
-    "endTime": "2024-08-17T15:30:00"
+    "endTime": "2024-08-17T15:30:00",
+    "minTeamMembers": 3,
+    "maxTeamMembers": 3
   },
   {
     "eventName": "Treasure Hunt",
@@ -333,12 +340,12 @@
       "Be genuine and ethical to solve the clues at each level on your own. Googling the answers is strictly prohibited.",
       "The Jury\u2019s decision will be final."
     ],
-    "facultyInCharge": [
-      "Dr.J.Senthil Kumar/ECE"
-    ],
+    "facultyInCharge": ["Dr.J.Senthil Kumar/ECE"],
     "venue": "S&H Seminar Hall \u2013 Prelims at 9.15 am; Finals - In front of AJ Block",
     "startTime": "2024-08-17T09:15:00",
-    "endTime": "2024-08-17T10:15:00"
+    "endTime": "2024-08-17T10:15:00",
+    "minTeamMembers": 5,
+    "maxTeamMembers": 5
   },
   {
     "eventName": "Poster Making",
@@ -352,12 +359,12 @@
       "For digital graphics, participants must bring their laptops with necessary software installed.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.M.Suresh Kumar/PHY"
-    ],
+    "facultyInCharge": ["Dr.M.Suresh Kumar/PHY"],
     "venue": "S&H Block - Computer Lab - I (I Floor)",
     "startTime": "2024-08-17T13:30:00",
-    "endTime": "2024-08-17T15:30:00"
+    "endTime": "2024-08-17T15:30:00",
+    "minTeamMembers": 2,
+    "maxTeamMembers": 2
   },
   {
     "eventName": "Pixie",
@@ -375,10 +382,33 @@
       "Attach the properties of the photo in the mail.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.M.Sureshkumar/PHY"
-    ],
+    "facultyInCharge": ["Dr.M.Sureshkumar/PHY"],
     "venue": "In front of MCC",
+    "startTime": "2024-08-17T09:30:00",
+    "endTime": "2024-08-17T12:30:00"
+  },
+  {
+    "eventName": "Best Manager",
+    "eventType": "Solo",
+    "rules": [
+      "No restriction in number of participants.",
+      "Usage of proper words during the event should be strictly followed.",
+      "The Jury’s decision is final.",
+      "Round 1- Prelims 3 rounds (Aptitude Questions, Individual task and multitasking).",
+      [
+        "Time: 09:15 AM",
+        "Language for communication is strictly English.",
+        "Selected participants will go to next round"
+      ],
+      "Final Round",
+      [
+        "Time: 01:15 PM",
+        "Totally single Round: (Situation handling)",
+        "Language for communication is strictly English."
+      ]
+    ],
+    "facultyInCharge": ["Dr.A. Sakthivel/CHEM"],
+    "venue": "Civil Seminar Hall",
     "startTime": "2024-08-17T09:30:00",
     "endTime": "2024-08-17T12:30:00"
   },
@@ -397,12 +427,12 @@
       "The Jury\u2019s decision is final.",
       "Permission letter from the parents is needed for Participation."
     ],
-    "facultyInCharge": [
-      "Dr.F.Winfred Shashikanth/PHY"
-    ],
+    "facultyInCharge": ["Dr.F.Winfred Shashikanth/PHY"],
     "venue": "S & H Block - AV Hall",
     "startTime": "2024-08-17T11:00:00",
-    "endTime": "2024-08-17T12:30:00"
+    "endTime": "2024-08-17T12:30:00",
+    "minTeamMembers": 1,
+    "maxTeamMembers": 8
   },
   {
     "eventName": "Divide and Conquer",
@@ -427,12 +457,12 @@
       "he tasks collectively",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Mr.Sebastiyan/LIB"
-    ],
+    "facultyInCharge": ["Mr.Sebastiyan/LIB"],
     "venue": "CSE Seminar Hall",
     "startTime": "2024-08-17T13:15:00",
-    "endTime": "2024-08-17T15:30:00"
+    "endTime": "2024-08-17T15:30:00",
+    "minTeamMembers": 5,
+    "maxTeamMembers": 5
   },
   {
     "eventName": "Monsters’ Muss",
@@ -449,12 +479,12 @@
       "Judging will also be based on the fluency, creative thinking, multi-tasking and language skills.",
       "The Jury’s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.B.Rathika/ENG"
-    ],
+    "facultyInCharge": ["Dr.B.Rathika/ENG"],
     "venue": "Civil Seminar Hall",
     "startTime": "2024-08-17T13:30:00",
-    "endTime": "2024-08-17T15:30:00"
+    "endTime": "2024-08-17T15:30:00",
+    "minTeamMembers": 2,
+    "maxTeamMembers": 2
   },
   {
     "eventName": "Drawing",
@@ -468,9 +498,7 @@
       "Topic will be given on the spot.",
       "The Jury\u2019s decision is final."
     ],
-    "facultyInCharge": [
-      "Dr.A.Shenbagarajan/AI&DS"
-    ],
+    "facultyInCharge": ["Dr.A.Shenbagarajan/AI&DS"],
     "venue": "S&H Block - Drawing Hall & SHF16 (First Floor)",
     "startTime": "2024-08-17T13:30:00",
     "endTime": "2024-08-17T15:00:00"
