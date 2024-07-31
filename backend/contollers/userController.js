@@ -143,7 +143,7 @@ const changePassword = async (req, res) => {
   try {
     const current_encrypted = encrypt(req.body.currentpassword);
     const data = await userModel.findOne({
-      Rollno: req.body.Rollno,
+      Rollno: req.user.Rollno,
       password: current_encrypted.content,
     });
     if (data == null) {
@@ -292,7 +292,7 @@ const registergroupevent = async (req, res) => {
   }
 }
 const myevents = async(req,res) => {
-  const data = await userModel.findOne({Rollno:req.query.Rollno})
+  const data = await userModel.findOne({Rollno:req.user.Rollno})
   const eventdata= data.events
   let events=[]
   for(let i =0;i<eventdata.length;i++){
