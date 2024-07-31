@@ -64,6 +64,8 @@ const EventDetails = () => {
   };
 
   const handleRegister = async () => {
+    const status = confirm("Are you sure you want to register for this event. This action is irreversible");
+    if(!status)return;
     let postData;
     let api;
     if (eventDetails.eventType == "Group") {

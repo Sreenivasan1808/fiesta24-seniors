@@ -22,6 +22,10 @@ export default function Layout({ children }: any) {
     {
       href: "/CoordinatorDashboard/ChangeParticipantPass",
       title: "Change Password for participant",
+    },
+    {
+      href: "/CoordinatorDashboard/ChangeTeamMembers",
+      title: "Change Team Memebrs",
     }
   ];
   return (
