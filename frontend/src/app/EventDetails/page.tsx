@@ -89,9 +89,13 @@ const EventDetails = () => {
         setModalText(
           `${eventName} is overlapping with another event that you have registered for`
         );
-      } else {
+      } else if(response.status == 205){
         setModalTitle("Sorry");
-        setModalText("Registered failed");
+        setModalText("Invalid Roll no");
+      }
+       else{
+        setModalTitle("Sorry");
+        setModalText("Registered failed: " + response.data);
       }
       // handleOpen();
     } catch (error) {
