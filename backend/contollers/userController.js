@@ -146,12 +146,15 @@ const changePassword = async (req, res) => {
       Rollno: req.user.Rollno,
       password: current_encrypted.content,
     });
+    console.log(req.user.Rollno)
+    console.log(data)
+    console.log(current_encrypted)
     if (data == null) {
       return res.status(404).json("Invalid rollno or password");
     } else {
       const new_encrypted = encrypt(req.body.newpassword);
       const update = await userModel.updateOne(
-        { Rollno: req.body.Rollno },
+        { Rollno: req.user.Rollno },
         { $set: { password: new_encrypted.content } }
       );
       return res.status(200).json("Success");
@@ -240,7 +243,10 @@ const registergroupevent = async (req, res) => {
     console.log(registeringEvent);
     for (let i = 0; i < members.length; i++) {
       const data = await userModel.findOne({ Rollno: members[i] });
-
+      if(data==null)
+      {
+        res.status(205).json("student not found")
+      }
       const events1 = data.events;
       console.log(flag);
       const eventTime = await eventModel.findOne({

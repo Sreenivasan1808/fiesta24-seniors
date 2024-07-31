@@ -7,14 +7,19 @@ const send_mail = (participantMail, message) => {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+    secure: process.env.SMTP_SECURE === 'false', // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USER, // SMTP user
       pass: process.env.SMTP_PASS  // SMTP password
     },
+    tls: {
+      ciphers: 'SSLv3',
+      rejectUnauthorized: false // If you encounter TLS-related issues
+    },
     
-    connectionTimeout: 10000, // 10 seconds timeout
-    socketTimeout: 10000 // 10 seconds timeout
+    
+    connectionTimeout: 2000000, // 20 seconds timeout
+    socketTimeout: 2000000 // 20 seconds timeout
   });
 
   // Define email options
