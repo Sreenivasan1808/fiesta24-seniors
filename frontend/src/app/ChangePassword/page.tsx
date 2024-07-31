@@ -29,7 +29,7 @@ const ChangePassword = () => {
     validateForm();
     try {
       const response = await axiosClient.post(
-        "/coordinatorRoutes/participantpasswordchange",
+        "/userRoutes/changepassword",
         { currentpassword: currentPassword, newpassword: password }
       );
       if (response.status == 200) {

@@ -89,11 +89,10 @@ const EventDetails = () => {
         setModalText(
           `${eventName} is overlapping with another event that you have registered for`
         );
-      } else if(response.status == 205){
+      } else if (response.status == 205) {
         setModalTitle("Sorry");
         setModalText("Invalid Roll no");
-      }
-       else{
+      } else {
         setModalTitle("Sorry");
         setModalText("Registered failed: " + response.data);
       }
@@ -121,13 +120,16 @@ const EventDetails = () => {
       { params: { eventName: eventName } } //need to send rollno
     );
     console.log(response.status);
-
-    if (response.status == 201) {
-      setIsRegistered(false);
-    } else if (response.status == 200) {
-      setIsRegistered(true);
-    } else {
-      console.log(response.data);
+    try {
+      if (response.status == 201) {
+        setIsRegistered(false);
+      } else if (response.status == 200) {
+        setIsRegistered(true);
+      } else {
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.error(error)
     }
   };
 

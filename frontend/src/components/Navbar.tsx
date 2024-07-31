@@ -62,12 +62,24 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {role == "participant" ? <Link
-              href="/ChangePassword"
-              className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
-            >
-              Change Password
-            </Link>: <></> }
+            {role == "participant" ? (
+              <>
+                <Link
+                  href="/MyEvents"
+                  className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
+                >
+                  My Events
+                </Link>
+                <Link
+                  href="/ChangePassword"
+                  className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
+                >
+                  Change Password
+                </Link>
+              </>
+            ) : (
+              <></>
+            )}
             <button
               className="px-4 rounded-3xl hover:bg-green-400 hover:text-black"
               onClick={() => {
