@@ -142,7 +142,7 @@ const changePassword = async (req, res) => {
   try {
     const current_encrypted = encrypt(req.body.currentpassword);
     const data = await userModel.findOne({
-      Rollno: req.body.Rollno,
+      Rollno: req.user.Rollno,
       password: current_encrypted.content,
     });
     if (data == null) {
