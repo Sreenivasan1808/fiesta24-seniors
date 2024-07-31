@@ -4,7 +4,7 @@ dotenv.config()
 const algorithm = 'aes-256-cbc';
 const secretKey = Buffer.from(process.env.SECRET_KEY,'hex');
 const iv = Buffer.from(process.env.IV,'hex');
-const text1 = 'fiestapass'
+//const text1 = '29b30b7f90bf8eddaa2c37803a8f52c2'
 const encrypt = (text) => {
   const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
   let encrypted = cipher.update(text, 'utf8', 'hex');
@@ -22,5 +22,5 @@ const decrypt = (text) => {
   return decrypted;
 };
 
-console.log(encrypt(text1))
+//console.log(decrypt(text1))
 module.exports = { encrypt, decrypt };
