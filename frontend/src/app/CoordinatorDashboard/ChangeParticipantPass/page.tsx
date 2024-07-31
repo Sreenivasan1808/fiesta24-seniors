@@ -151,7 +151,7 @@ const ChangeParticipantPassword = () => {
                   component={motion.button}
                   whileTap={{ scale: 0.85 }}
                 >
-                  Register
+                  Change Password
                 </Button>
               </div>
             </form>

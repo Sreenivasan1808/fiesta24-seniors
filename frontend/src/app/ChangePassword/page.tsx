@@ -25,7 +25,8 @@ const ChangePassword = () => {
     return true;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     validateForm();
     try {
       const response = await axiosClient.post(

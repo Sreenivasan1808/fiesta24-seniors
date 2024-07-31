@@ -94,7 +94,7 @@ const participantpasswordchange= async (req,res)=>{
     const rollno=req.body.Rollno
     console.log("hi")
     const newpassword=encrypt(req.body.newpassword).content
-    const data =  await userModel.updateOne({Rollno:rollno},{$set :{password:newpassword}})
+    const data =  await userModel.updateOne({Rollno:rollno,role:"participant"},{$set :{password:newpassword}})
     console.log(data)
     if(data.modifiedCount==1){
       res.status(200).json("update success")
@@ -106,6 +106,7 @@ const participantpasswordchange= async (req,res)=>{
   }
   catch(error)
   {
+    console.log(error)
     res.status(500).json({message:"something went wrong",
       error:error
     })
