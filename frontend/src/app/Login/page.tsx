@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, IconButton, InputAdornment, Modal, TextField, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { axiosClient } from "../services/axiosClient";
+import { axiosClient, logout } from "../services/axiosClient";
 import {setRefreshedTokens} from "../services/axiosClient";
 import axios from "axios";
 
@@ -23,6 +23,10 @@ const LoginPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    logout();
+  }, []) 
 
   const handleForgotPassword = async () => {
     setModalOpen(false);

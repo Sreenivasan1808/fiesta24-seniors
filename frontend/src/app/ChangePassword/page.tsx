@@ -25,11 +25,12 @@ const ChangePassword = () => {
     return true;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     validateForm();
     try {
       const response = await axiosClient.post(
-        "/userRoutes/changepassword",
+        "userRoutes/changepassword",
         { currentpassword: currentPassword, newpassword: password }
       );
       if (response.status == 200) {
