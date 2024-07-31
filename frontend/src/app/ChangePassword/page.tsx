@@ -27,7 +27,20 @@ const ChangePassword = () => {
 
   const handleSubmit = async () => {
     validateForm();
-    const response = await axiosClient.post("", {currentpassword: currentPassword, password: password})
+    try {
+      const response = await axiosClient.post(
+        "/coordinatorRoutes/participantpasswordchange",
+        { currentpassword: currentPassword, newpassword: password }
+      );
+      if (response.status == 200) {
+        alert("Password changed");
+      } else if (response.status == 201) {
+        alert("Invalid Roll No");
+      }
+    } catch (error) {
+      alert("Something went wrong");
+      console.error(error);
+    }
   };
 
   const handleClickShowPassword = () => {

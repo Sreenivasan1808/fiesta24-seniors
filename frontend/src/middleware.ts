@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
     const role = request.cookies.get("role")?.value;
     console.log(role)
-    if(role == null || role == "participant" && request.url.includes("CoordinatorDashboard")){
+    if((role == null || role == "participant") && request.url.includes("CoordinatorDashboard")){
         return NextResponse.redirect(new URL('http://localhost:3000', request.url))
     }
 

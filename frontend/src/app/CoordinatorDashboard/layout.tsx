@@ -18,6 +18,10 @@ export default function Layout({ children }: any) {
     {
       href: "/CoordinatorDashboard/RegisterEvent",
       title: "Register for Event",
+    },
+    {
+      href: "/CoordinatorDashboard/ChangeParticipantPass",
+      title: "Change Password for participant",
     }
   ];
   return (

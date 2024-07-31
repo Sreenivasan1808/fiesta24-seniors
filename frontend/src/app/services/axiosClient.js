@@ -1,5 +1,5 @@
 import { createAxiosClient } from "./createAxiosClient";
-import {Cookies} from "js-cookie"
+import Cookies from 'js-cookie'
 const REFRESH_TOKEN_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/userRoutes/refresh-token`;
 const BASE_URL = `${process.env.NEXT_PUBLIC_SERVER_URL}/`;
 
