@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <main className="font-josefin">
       <div
-        className="flex "
+        className="flex items-center"
         style={{
           backgroundImage:
             "radial-gradient(170% 125% at 50% 0%, #1e293b 50%, #184a2f)",
@@ -113,7 +113,21 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </section>
-        <motion.img src="/hero.png" alt="ART" />
+        <motion.img
+          src="/colors.png"
+          alt="ART"
+          className="w-96 h-96 m-4 p-4"
+          initial={{ scale: 0.1, opacity: 0 }}
+          animate={{
+            scale: 1.25,
+            opacity: 1,
+            transition: {
+              duration: 0.6,
+              ease: "easeInOut",
+              delay: 0.5,
+            },
+          }}
+        />
       </div>
       <div
         id="events"
