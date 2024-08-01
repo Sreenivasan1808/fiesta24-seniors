@@ -54,7 +54,7 @@ const LoginPage = () => {
       setPasswordError("Please enter your password");
       isValid = false;
     }
-    return isValid;
+    return isValid; 
   };
 
   const handleSubmit = async (e: any) => {

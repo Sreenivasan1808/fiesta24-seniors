@@ -8,7 +8,9 @@ router.post("/participantpasswordchange",coordinatorController.participantpasswo
 router.post("/accept", coordinatorController.Accept);
 router.post("/acceptall", coordinatorController.Acceptall);
 router.post("/reject", coordinatorController.Reject);
+router.post("/changeMember",coordinatorController.changeMember)
 router.get("/dashboard",coordinatorController.Dashboard)
 router.get("/download",excel.download)
+router.get("/getMembers",coordinatorController.getMembers)
 
 module.exports = router;

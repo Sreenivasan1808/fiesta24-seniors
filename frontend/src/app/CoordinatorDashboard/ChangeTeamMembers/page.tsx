@@ -17,7 +17,7 @@ import { axiosClient } from "@/app/services/axiosClient";
 const ChangeTeamMembers = () => {
   const [rollNo, setRollNo] = useState("");
   const [eventName, setEventName] = useState("");
-  const [teamName, setTeamName] = useState("asf");
+  const [teamName, setTeamName] = useState("");
   const [teamMembers, setTeamMembers] = useState(Array.from({ length: 0 }));
 
   const handleEventChange = (event: SelectChangeEvent) => {
@@ -27,7 +27,7 @@ const ChangeTeamMembers = () => {
   const handleGetTeamList = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosClient.get("", {
+      const response = await axiosClient.get("coordinatorRoutes/getMembers", {
         params: { eventName: eventName, Rollno: rollNo },
       });
       if (response.status == 200) {
@@ -46,7 +46,7 @@ const ChangeTeamMembers = () => {
 
   const handleTeamSubmit = async (e) => {
     e.preventDefault();
-    const response = await axiosClient.post("", {eventName: eventName, teamMembers: teamMembers, teamName: teamName});
+    const response = await axiosClient.post("coordinatorRoutes/changeMember", {eventName: eventName, teamMembers: teamMembers, teamName: teamName});
     try {
         
         if(response.status == 200){
@@ -110,7 +110,7 @@ const ChangeTeamMembers = () => {
           </Button>
         </div>
       </div>
-      {teamName.length > 0 ? (
+      {teamName.length > 0 && teamMembers.length > 0 ? ( 
         <div className="w-full m-2 rounded-2xl shadow-2xl border-2">
           <form className="flex flex-col justify-center items-center w-full p-4" onSubmit={handleTeamSubmit}>
             <Typography
@@ -127,6 +127,7 @@ const ChangeTeamMembers = () => {
               label="Team Name"
               color="success"
               value={teamName}
+              disabled
               onChange={(e) => setTeamName(e.target.value)}
               className="my-2 w-full"
             />
@@ -134,12 +135,14 @@ const ChangeTeamMembers = () => {
               return (
                 <TextField
                   variant="outlined"
-                  label="Team Name"
+                  label="Team Members"
                   color="success"
-                  value={member}
+                  key={idx}
+                  value={teamMembers.at(idx)}
                   onChange={(e) => {
-                    let team = teamMembers;
+                    let team = teamMembers;                   
                     team[idx] = e.target.value;
+                    
                     setTeamMembers(team);
                   }}
                   className="my-2 w-full"

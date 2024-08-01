@@ -239,14 +239,35 @@ const registergroupevent = async (req, res) => {
   try {
     let flag = 1;
     const members = req.body.teamMembers;
+    for(let i=0;i<members.length;i++)
+    {
+      for(let j=i+1;j<members.length;j++)
+      {
+        if(members[j]==null){ 
+          continue
+        }
+        if(members[j]==members[i]){
+          console.log("hello  ")
+          res.status(206).json("team members repeated")
+          return
+        }
+      }
+    }
     const registeringEvent = req.body.eventName;
     console.log(registeringEvent);
+    console.log(`length:${members.length}`)
     for (let i = 0; i < members.length; i++) {
+      if(members[i]==null){
+        continue
+      }
       const data = await userModel.findOne({ Rollno: members[i] });
+      //console.log(data)
       if(data==null)
       {
         res.status(205).json("student not found")
       }
+      //console.log(`data:${data.events}`)
+      
       const events1 = data.events;
       console.log(flag);
       const eventTime = await eventModel.findOne({
@@ -279,8 +300,8 @@ const registergroupevent = async (req, res) => {
       res.status(204).json({ message: "cannot participate" });
     } else {
       const newgroupevent = new groupeventModel({
-        teamName: req.body.teamname,
-        event: registeringEvent,
+        teamName: req.body.teamName,
+        EventName: registeringEvent,
         members: members,
         teamLeader: members[0],
       });

@@ -94,6 +94,9 @@ const EventDetails = () => {
       } else if (response.status == 205) {
         setModalTitle("Sorry");
         setModalText("Invalid Roll no");
+      }else if(response.status==206){
+        setModalTitle("Sorry");
+        setModalText("repeated Roll no");
       } else {
         setModalTitle("Sorry");
         setModalText("Registered failed: " + response.data);

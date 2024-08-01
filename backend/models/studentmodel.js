@@ -16,7 +16,7 @@ const studentSchema = new mongoose.Schema({
     mail:{
         type:String
     },
-    admissionNumber:{
+    section:{
         type:Number
     }
 })

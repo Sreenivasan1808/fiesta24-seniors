@@ -3,7 +3,8 @@ const { send_mail } = require("../mailer"); // Adjust the import based on your f
 const userModel = require("../models/user");
 const studentModel = require("../models/studentmodel");
 const {excelDownloader}=require("../excel")
-const {encrypt,decrypt} = require("../crypto-utils")
+const {encrypt,decrypt} = require("../crypto-utils");
+const groupevents = require("../models/groupevents");
 dotenv.config();
 
 const accept = async (req, res) => {
@@ -137,11 +138,65 @@ const dashboard = async (req, res) => {
     res.status(200).json(arr);
   }
 };
+const changeMember = async(req,res)=>{
+  try{
+    const members=req.body.teamMembers
+    const data=await groupevents.findOne({teamName:req.body.teamName,teamLeader:members[0],EventName:req.body.eventName})
+    const oldmembers=data.members
+    if(data==null)
+    {
+      res.status(204).json("Wrong Team Leader")
+    }
+    else{
+      
+      for(let i=0;i<members.length;i++){
+        const verify= await userModel.findOne({Rollno:members[i]})
+        if(verify==null){
+          res.status(201).json("user not found")
+        }
+      }
+      const update=await groupevents.updateOne({teamName:req.body.teamName,teamLeader:members[0],EventName:eventName})
+      for(let i=0;i<oldmembers.length;i++)
+      {
+        if(members.include(oldmembers[i]))
+        {
+          continue
+        }
+        else{
+          const userupdata=await userModel.updateOne({Rollno:oldmembers[i]},{$pull:{events:eventName}})
+          res.status(200).json("success")
+        }
+      }
+    }
+  }
+  catch(error){
+    res.status(500).json("something went wrong")
+  }
+}
+const getMembers = async(req,res) => {
+  try{
+    const data=await groupevents.findOne({EventName:req.query.eventName,teamLeader:req.query.Rollno})
+    if(data==null){
+      res.status(201).json("Invalid event Name or Team Leader")
+    }
+    else{
+      res.status(200).json({
+        teamName:data.teamName,
+        teamMembers:data.members
+      })
+    }
+  }
+  catch(error){
+
+  }
+}
 
 module.exports = {
   Accept: accept,
   Acceptall: acceptall,
   Reject: reject,
   Dashboard: dashboard,
-  participantpasswordchange:participantpasswordchange
+  participantpasswordchange:participantpasswordchange,
+  changeMember:changeMember,
+  getMembers:getMembers
 };
