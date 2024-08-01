@@ -97,6 +97,7 @@ const ChangeTeamMembers = () => {
             variant="outlined"
             value={rollNo}
             label="Team Leader Roll no"
+            color="success"
             onChange={(e) => setRollNo(e.target.value)}
           />
           <Button
@@ -135,7 +136,7 @@ const ChangeTeamMembers = () => {
               return (
                 <TextField
                   variant="outlined"
-                  label="Team Members"
+                  label={idx == 0 ? "Team Leader Roll no" : `Team Member ${idx+1} Roll No`}
                   color="success"
                   key={idx}
                   value={teamMembers.at(idx)}
