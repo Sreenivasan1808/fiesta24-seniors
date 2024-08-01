@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import eventsJson from "../../../../public/events.json";
 import { axiosClient } from "@/app/services/axiosClient";
 
@@ -18,24 +18,76 @@ const ChangeTeamMembers = () => {
   const [rollNo, setRollNo] = useState("");
   const [eventName, setEventName] = useState("");
   const [teamName, setTeamName] = useState("");
-  const [teamMembers, setTeamMembers] = useState(Array.from({ length: 0 }));
+  const [dataFetched, setDataFetched] = useState(false);
+  const [minTeamMembers, setMinTeamMembers] = useState(0);
+  const [maxTeamMembers, setMaxTeamMembers] = useState(0);
+  const [teamMembers, setTeamMembers] = useState(Array.from({ length: maxTeamMembers }));
 
   const handleEventChange = (event: SelectChangeEvent) => {
     setEventName(event.target.value as string);
   };
 
+  const handleTeamMemberChange = (idx: number, rollno: string) => {
+    console.log(rollno);
+    console.log(idx);
+    
+    let members = teamMembers;
+    members[idx] = rollno;
+    setTeamMembers(members);
+  };
+
+  // useEffect(() => {
+  //   for (let event_ of eventsJson) {
+  //     if (event_.eventName == eventName) {
+  //       let minTeamMembers: any = 0;
+  //       let maxTeamMembers: any = 0;
+
+  //       if (event_.eventType == "Group") {
+  //         minTeamMembers = event_.minTeamMembers;
+  //         maxTeamMembers = event_.maxTeamMembers;
+  //         setTeamMembers(Array.from({ length: maxTeamMembers }));
+  //       }
+
+  //       break;
+  //     }
+  //   }
+
+  // }, [dataFetched]);
+
   const handleGetTeamList = async (e) => {
     e.preventDefault();
     try {
       const response = await axiosClient.get("coordinatorRoutes/getMembers", {
-        params: { eventName: eventName, Rollno: rollNo },
+        params: { eventName: eventName, Rollno: rollNo.toLowerCase() },
       });
       if (response.status == 200) {
+        for (let event_ of eventsJson) {
+          if (event_.eventName == eventName) {
+            let minTeamMembers1: any = 0;
+            let maxTeamMembers1: any = 0;
+
+            minTeamMembers1 = event_.minTeamMembers;
+            maxTeamMembers1 = event_.maxTeamMembers;
+            setTeamMembers(Array.from({ length: maxTeamMembers1 }));
+            setMinTeamMembers(minTeamMembers1);
+            setMaxTeamMembers(maxTeamMembers1);
+
+            break;
+          }
+        }
+        let team = Array.from({ length: maxTeamMembers });
+        let newTeam = response.data.teamMembers;
+        for(let i = 0; i < newTeam.length; i++){
+          team[i] = newTeam[i];
+        }
         setTeamName(response.data.teamName);
-        setTeamMembers(response.data.teamMembers);
+        setTeamMembers(team);
+        setDataFetched(true);
       } else if (response.status == 201) {
         alert("You have not registered for this event");
+        setDataFetched(false);
       } else {
+        setDataFetched(false);
         alert(response.data);
       }
     } catch (error) {
@@ -46,22 +98,24 @@ const ChangeTeamMembers = () => {
 
   const handleTeamSubmit = async (e) => {
     e.preventDefault();
-    const response = await axiosClient.post("coordinatorRoutes/changeMember", {eventName: eventName, teamMembers: teamMembers, teamName: teamName});
+    const response = await axiosClient.post("coordinatorRoutes/changeMember", {
+      eventName: eventName,
+      teamMembers: teamMembers.map((e = e.toLowerCase())),
+      teamName: teamName,
+    });
     try {
-        
-        if(response.status == 200){
-            alert("Changed successfully");
-        }else if(response.status == 201){
-            alert("One or more Invalid roll no");
-        }else{
-            alert(response.data)
-        }
+      if (response.status == 200) {
+        alert("Changed successfully");
+      } else if (response.status == 201) {
+        alert("One or more Invalid roll no");
+      } else {
+        alert(response.data);
+      }
     } catch (error) {
-        alert("something went wrong" + error);
-        console.error(error);
-        
+      alert("something went wrong" + error);
+      console.error(error);
     }
-  }
+  };
   return (
     <>
       <div className="w-full m-4 rounded-2xl shadow-2xl border-2">
@@ -111,9 +165,12 @@ const ChangeTeamMembers = () => {
           </Button>
         </div>
       </div>
-      {teamName.length > 0 && teamMembers.length > 0 ? ( 
+      {dataFetched ? (
         <div className="w-full m-2 rounded-2xl shadow-2xl border-2">
-          <form className="flex flex-col justify-center items-center w-full p-4" onSubmit={handleTeamSubmit}>
+          <form
+            className="flex flex-col justify-center items-center w-full p-4 m-4"
+            onSubmit={handleTeamSubmit}
+          >
             <Typography
               id="groupform"
               variant="h6"
@@ -129,29 +186,37 @@ const ChangeTeamMembers = () => {
               color="success"
               value={teamName}
               disabled
-              onChange={(e) => setTeamName(e.target.value)}
               className="my-2 w-full"
             />
-            {teamMembers.map((member, idx) => {
+            {Array.from({length: maxTeamMembers}).map((member, idx) => {
+              let roll = teamMembers[idx];
               return (
                 <TextField
                   variant="outlined"
-                  label={idx == 0 ? "Team Leader Roll no" : `Team Member ${idx+1} Roll No`}
+                  label={
+                    idx == 0
+                      ? "Team Leader Roll no"
+                      : `Team Member ${idx + 1} Roll No`
+                  }
                   color="success"
                   key={idx}
-                  value={teamMembers.at(idx)}
+                  required = {idx <= minTeamMembers}
+                  value={roll}
                   onChange={(e) => {
-                    let team = teamMembers;                   
-                    team[idx] = e.target.value;
-                    
-                    setTeamMembers(team);
+                    handleTeamMemberChange(idx, e.target.value.toLowerCase());
                   }}
                   className="my-2 w-full"
                 />
               );
             })}
 
-            <Button variant="contained" color="success" sx={{borderRadius: "2rem"}}>Submit</Button>
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ borderRadius: "2rem" }}
+            >
+              Submit
+            </Button>
           </form>
         </div>
       ) : (

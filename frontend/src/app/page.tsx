@@ -38,7 +38,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             {/* Uncomment and adjust the following code if you want to include the image animation */}
             {/* <motion.img
@@ -76,7 +76,7 @@ export default function Home() {
             <motion.p
               className="text-5xl text-left "
               style={{ color: "rgb(200, 200, 200)" }}
-              initial={{ opacity: 0, x: 80 }}
+              initial={{ opacity: 0, x: -80 }}
               animate={{
                 opacity: 1,
                 x: 0,
@@ -91,10 +91,11 @@ export default function Home() {
             </motion.p>
             <motion.div
               className="flex justify-start mt-8"
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0, x:-80 }}
               animate={{
                 scale: 1,
                 opacity: 1,
+                x: 0,
                 transition: {
                   duration: 0.6,
                   ease: "easeInOut",
@@ -122,7 +123,7 @@ export default function Home() {
             scale: 1.25,
             opacity: 1,
             transition: {
-              duration: 0.6,
+              duration: 1,
               ease: "easeInOut",
               delay: 0.5,
             },
