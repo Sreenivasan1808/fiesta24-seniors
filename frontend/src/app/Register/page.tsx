@@ -35,7 +35,7 @@ const RegisterPage = () => {
   }) => {
     let isValid = true;
     if (!formData.Rollno || formData.Rollno.trim().length == 0) {
-      setRollNoError("Please enter your roll no (eg: 21BCS166)");
+      setRollNoError("Please enter your roll no (eg: 21bcs183)");
       isValid = false;
     }
     if (!formData.password || formData.password.trim().length == 0) {
