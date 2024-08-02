@@ -5,17 +5,16 @@ const studentModel = require("../models/studentmodel");
 const {excelDownloader}=require("../excel")
 const {encrypt,decrypt} = require("../crypto-utils");
 const groupevents = require("../models/groupevents");
+const axios=require("axios")
 dotenv.config();
 
 const accept = async (req, res) => {
   try {
-    const result=await studentModel.findOne({Rollno:req.body.Rollno})
-    const participantMail = result.mail;
-    console.log(participantMail);
+    const result=(await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${req.body.Rollno}`)).data
+    const participantMail = result.Email;
     // Update the user's status to "approved"
     
-    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "approved" } });
-    console.log(result._id);
+    const update = await userModel.updateOne({ Rollno:req.body.Rollno }, { $set: { status: "approved" } });
 
     if (!result) {
       return res.status(404).json({ message: 'User not found' });
@@ -35,11 +34,11 @@ const accept = async (req, res) => {
 
 const reject = async (req, res) => {
   try {
-    const result=await studentModel.findOne({Rollno:req.body.Rollno})
-    const participantMail = result.mail;
+    const result=(await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${req.body.Rollno}`)).data
+    const participantMail = result.Email;
 
     // Update the user's status to "rejected"
-    const update = await userModel.updateOne({ detail: result._id }, { $set: { status: "rejected" } });
+    const update = await userModel.updateOne({ Rollno:req.body.Rollno }, { $set: { status: "rejected" } });
 
     if (!result) {
       return res.status(404).json({ message: 'User not found' });
@@ -64,8 +63,8 @@ const acceptall = async (req, res) => {
 
     const message = 'Dear participant, your registration has been approved by the coordinator';
     for (let i = 0; i < result.length; i++) {
-      const data = await studentModel.findOne({ Rollno: result[i].Rollno });
-      participantMail = data.mail;
+      const data = (await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${result[i].Rollno}`)).data
+      participantMail = data.Email;
       const update = await userModel.updateMany(
         { Rollno: result[i].Rollno }, // Update only those who are not already approved
         { $set: { status: "approved" } }
@@ -93,10 +92,10 @@ const acceptall = async (req, res) => {
 const participantpasswordchange= async (req,res)=>{
   try{
     const rollno=req.body.Rollno
-    console.log("hi")
+    
     const newpassword=encrypt(req.body.newpassword).content
     const data =  await userModel.updateOne({Rollno:rollno,role:"participant"},{$set :{password:newpassword}})
-    console.log(data)
+    
     if(data.modifiedCount==1){
       res.status(200).json("update success")
     }
@@ -125,13 +124,13 @@ const dashboard = async (req, res) => {
 
   let arr = [];
   for (let i = 0; i < details.length; i++) {
-    // console.log(details[i].detail)
+    
 
     //replace with API call provided by Sir
-    const data = await studentModel.findOne({ _id: details[i].detail });
+    const data = (await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${req.body.Rollno}`)).data;
     arr.push(data);
   }
-  console.log(arr);
+ 
   if (arr.length == 0) {
     res.status(204).end();
   } else {
@@ -140,37 +139,79 @@ const dashboard = async (req, res) => {
 };
 const changeMember = async(req,res)=>{
   try{
+    
     const members=req.body.teamMembers
+    for(let i=0;i<members.length;i++)
+      {
+        for(let j=i+1;j<members.length;j++)
+        {
+          if(members[j]==null){ 
+            continue
+          }
+          if(members[j]==members[i]){
+            
+            res.status(206).json("team members repeated")
+            return
+          }
+        }
+      }
     const data=await groupevents.findOne({teamName:req.body.teamName,teamLeader:members[0],EventName:req.body.eventName})
     const oldmembers=data.members
     if(data==null)
-    {
+    { 
+      
       res.status(204).json("Wrong Team Leader")
+      return
     }
     else{
       
       for(let i=0;i<members.length;i++){
+        if(members[i]==null)
+        {
+          continue
+        }
         const verify= await userModel.findOne({Rollno:members[i]})
         if(verify==null){
+          
+          console.log("not found")
           res.status(201).json("user not found")
+          return
         }
       }
-      const update=await groupevents.updateOne({teamName:req.body.teamName,teamLeader:members[0],EventName:eventName})
+      const update=await groupevents.updateOne({teamName:req.body.teamName,teamLeader:members[0],EventName:req.body.eventName},{members:members})
       for(let i=0;i<oldmembers.length;i++)
       {
-        if(members.include(oldmembers[i]))
+        if(members.includes(oldmembers[i]))
         {
           continue
         }
         else{
-          const userupdata=await userModel.updateOne({Rollno:oldmembers[i]},{$pull:{events:eventName}})
-          res.status(200).json("success")
+          
+          await userModel.updateOne(
+            { Rollno: oldmembers[i] },           // Filter to find the correct user
+            { $pull: { events: req.body.eventName } }     // Remove eventName from the events array
+          );
         }
+          
+        
       }
+      const uniqueInArray1 = members.filter(value => !oldmembers.includes(value));
+          
+          for(let i=0;i<uniqueInArray1.length;i++){
+            if(uniqueInArray1[i]==null){
+              continue
+            }
+            const newupdata=await userModel.updateOne({Rollno:uniqueInArray1[i]},{events:req.body.eventName})
+          }
+          console.log("success")
+          res.status(200).json("success")
+          return
     }
   }
   catch(error){
-    res.status(500).json("something went wrong")
+    console.log(error)
+    res.status(208).json("something went wrong")
+    return
   }
 }
 const getMembers = async(req,res) => {

@@ -35,6 +35,8 @@ const ChangeTeamMembers = () => {
         setTeamMembers(response.data.teamMembers);
       } else if (response.status == 201) {
         alert("You have not registered for this event");
+      } else if (response.status == 206) {
+        alert("repeated team members");
       } else {
         alert(response.data);
       }
@@ -46,22 +48,24 @@ const ChangeTeamMembers = () => {
 
   const handleTeamSubmit = async (e) => {
     e.preventDefault();
-    const response = await axiosClient.post("coordinatorRoutes/changeMember", {eventName: eventName, teamMembers: teamMembers, teamName: teamName});
+    const response = await axiosClient.post("coordinatorRoutes/changeMember", {
+      eventName: eventName,
+      teamMembers: teamMembers,
+      teamName: teamName,
+    });
     try {
-        
-        if(response.status == 200){
-            alert("Changed successfully");
-        }else if(response.status == 201){
-            alert("One or more Invalid roll no");
-        }else{
-            alert(response.data)
-        }
+      if (response.status == 200) {
+        alert("Changed successfully");
+      } else if (response.status == 201) {
+        alert("One or more Invalid roll no");
+      } else {
+        alert(response.data);
+      }
     } catch (error) {
-        alert("something went wrong" + error);
-        console.error(error);
-        
+      alert("something went wrong" + error);
+      console.error(error);
     }
-  }
+  };
   return (
     <>
       <div className="w-full m-4 rounded-2xl shadow-2xl border-2">
@@ -111,9 +115,12 @@ const ChangeTeamMembers = () => {
           </Button>
         </div>
       </div>
-      {teamName.length > 0 && teamMembers.length > 0 ? ( 
+      {teamName.length > 0 && teamMembers.length > 0 ? (
         <div className="w-full m-2 rounded-2xl shadow-2xl border-2">
-          <form className="flex flex-col justify-center items-center w-full p-4" onSubmit={handleTeamSubmit}>
+          <form
+            className="flex flex-col justify-center items-center w-full p-4"
+            
+          >
             <Typography
               id="groupform"
               variant="h6"
@@ -136,22 +143,32 @@ const ChangeTeamMembers = () => {
               return (
                 <TextField
                   variant="outlined"
-                  label={idx == 0 ? "Team Leader Roll no" : `Team Member ${idx+1} Roll No`}
+                  label={
+                    idx === 0
+                      ? "Team Leader Roll no"
+                      : `Team Member ${idx + 1} Roll No`
+                  }
                   color="success"
                   key={idx}
-                  value={teamMembers.at(idx)}
+                  value={member}
                   onChange={(e) => {
-                    let team = teamMembers;                   
-                    team[idx] = e.target.value;
-                    
-                    setTeamMembers(team);
+                    const updatedTeam = [...teamMembers]; // Create a new array with the spread operator
+                    updatedTeam[idx] = e.target.value; // Update the value at the current index
+                    setTeamMembers(updatedTeam); // Set the new array as the state
                   }}
                   className="my-2 w-full"
                 />
               );
             })}
 
-            <Button variant="contained" color="success" sx={{borderRadius: "2rem"}}>Submit</Button>
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ borderRadius: "2rem" }}
+              onClick={handleTeamSubmit}
+            > 
+              Submit
+            </Button>
           </form>
         </div>
       ) : (

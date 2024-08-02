@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import EventsPanel from "@/components/EventsPanel";
 import { Rock_Salt } from "next/font/google";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { Opacity } from "@mui/icons-material";
 
 const rock_salt = Rock_Salt({
   weight: "400",
@@ -28,7 +30,7 @@ export default function Home() {
         className="flex items-center"
         style={{
           backgroundImage:
-            "radial-gradient(170% 125% at 50% 0%, #1e293b 50%, #184a2f)",
+            "radial-gradient(170% 125% at 50% 0%, #2F8282 20%, #184a2f)",
         }}
       >
         <section
@@ -38,7 +40,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             {/* Uncomment and adjust the following code if you want to include the image animation */}
             {/* <motion.img
@@ -56,27 +58,33 @@ export default function Home() {
           animate={{ x: '0%' }}
           transition={{ duration: 1, ease: "easeOut" }}
         /> */}
-            <motion.h1
+            {/* <motion.h1
               style={{
                 fontSize: "8rem",
                 color: "rgb(210,210,210)",
                 textShadow: "0px 0px 25px rgb(0, 200, 0)",
               }}
               className={rock_salt.className}
-              initial="hidden"
-              animate="visible"
-              transition={{ staggerChildren: 0.2 }}
-            >
-              {fiestaText.split("").map((char, index) => (
+              initial={{scale: 0}}
+              animate={{scale:1}}
+              transition={{ staggerChildren: 0.2, duration: 0.2 }}
+            > */}
+            {/* {fiestaText.split("").map((char, index) => (
                 <motion.span key={index} variants={dropInVariants}>
                   {char}
                 </motion.span>
-              ))}
-            </motion.h1>
+              ))} */}
+            <Image
+              src="/fiesta.gif"
+              alt="Fiesta 24"
+              width={800}
+              height={800}
+            ></Image>
+            {/* </motion.h1> */}
             <motion.p
-              className="text-5xl text-left "
+              className="text-3xl text-left m-0"
               style={{ color: "rgb(200, 200, 200)" }}
-              initial={{ opacity: 0, x: 80 }}
+              initial={{ opacity: 0, x: -80 }}
               animate={{
                 opacity: 1,
                 x: 0,
@@ -91,10 +99,11 @@ export default function Home() {
             </motion.p>
             <motion.div
               className="flex justify-start mt-8"
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0, x: -80 }}
               animate={{
                 scale: 1,
                 opacity: 1,
+                x: 0,
                 transition: {
                   duration: 0.6,
                   ease: "easeInOut",
@@ -122,7 +131,7 @@ export default function Home() {
             scale: 1.25,
             opacity: 1,
             transition: {
-              duration: 0.6,
+              duration: 1,
               ease: "easeInOut",
               delay: 0.5,
             },

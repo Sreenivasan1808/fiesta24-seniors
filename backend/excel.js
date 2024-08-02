@@ -2,6 +2,7 @@ const XLSX = require('xlsx');
 const studentModel = require("./models/studentmodel");
 const soloeventModel = require("./models/soloeventmodel");
 const groupeventModel=require("./models/groupevents")
+const axios=require("axios")
 
 // Sample JSON data
 const download = async (req, res) => {
@@ -12,10 +13,17 @@ const download = async (req, res) => {
             
             for (let i = 0; i < participants.length; i++) {
                 const rollno = participants[i].Rollno; // Extract the Rollno
-                const data = await studentModel.findOne({ Rollno: rollno });
-                console.log(data);
+                const data = await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${rollno}`)
+                let year=data.semester
+                if(year%2==0)
+                {
+                    year=year/2
+                }
+                else{
+                    year=(year+1)/2
+                }
                 if (data) {
-                    jsonData.push({Rollno:data.Rollno,Name:data.name,Branch:data.branch,Year:data.year});
+                    jsonData.push({Rollno:data.RollNumber,Name:data.Name,Branch:data.Program,Year:year,Section:data.Section});
                 }
             }
 
@@ -48,10 +56,10 @@ const download = async (req, res) => {
                 for(let j=0;j<teamMembers.length;j++)
                 {
                     const rollno=teamMembers[j]
-                    const data = await studentModel.findOne({ Rollno: rollno });
+                    const data = await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${rollno}`)
                     console.log(data);
                     if (data) {
-                        jsonData.push({TeamName:teamName,Rollno:data.Rollno,Name:data.name,Branch:data.branch,Year:data.year});
+                        jsonData.push({TeamName:teamName,Rollno:data.RollNumber,Name:data.Name,Branch:data.Program,Year:year,Section:data.Section});
                     }
                 }
             }
