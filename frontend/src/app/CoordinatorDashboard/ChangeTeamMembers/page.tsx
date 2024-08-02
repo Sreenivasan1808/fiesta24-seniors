@@ -85,7 +85,12 @@ const ChangeTeamMembers = () => {
         setDataFetched(true);
       } else if (response.status == 201) {
         alert("You have not registered for this event");
+<<<<<<< HEAD
+      } else if (response.status == 206) {
+        alert("repeated team members");
+=======
         setDataFetched(false);
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
       } else {
         setDataFetched(false);
         alert(response.data);
@@ -100,7 +105,11 @@ const ChangeTeamMembers = () => {
     e.preventDefault();
     const response = await axiosClient.post("coordinatorRoutes/changeMember", {
       eventName: eventName,
+<<<<<<< HEAD
+      teamMembers: teamMembers,
+=======
       teamMembers: teamMembers.map((e = e.toLowerCase())),
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
       teamName: teamName,
     });
     try {
@@ -165,11 +174,19 @@ const ChangeTeamMembers = () => {
           </Button>
         </div>
       </div>
+<<<<<<< HEAD
+      {teamName.length > 0 && teamMembers.length > 0 ? (
+        <div className="w-full m-2 rounded-2xl shadow-2xl border-2">
+          <form
+            className="flex flex-col justify-center items-center w-full p-4"
+            
+=======
       {dataFetched ? (
         <div className="w-full m-2 rounded-2xl shadow-2xl border-2">
           <form
             className="flex flex-col justify-center items-center w-full p-4 m-4"
             onSubmit={handleTeamSubmit}
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
           >
             <Typography
               id="groupform"
@@ -194,16 +211,28 @@ const ChangeTeamMembers = () => {
                 <TextField
                   variant="outlined"
                   label={
+<<<<<<< HEAD
+                    idx === 0
+=======
                     idx == 0
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
                       ? "Team Leader Roll no"
                       : `Team Member ${idx + 1} Roll No`
                   }
                   color="success"
                   key={idx}
+<<<<<<< HEAD
+                  value={member}
+                  onChange={(e) => {
+                    const updatedTeam = [...teamMembers]; // Create a new array with the spread operator
+                    updatedTeam[idx] = e.target.value; // Update the value at the current index
+                    setTeamMembers(updatedTeam); // Set the new array as the state
+=======
                   required = {idx <= minTeamMembers}
                   value={roll}
                   onChange={(e) => {
                     handleTeamMemberChange(idx, e.target.value.toLowerCase());
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
                   }}
                   className="my-2 w-full"
                 />
@@ -214,7 +243,12 @@ const ChangeTeamMembers = () => {
               variant="contained"
               color="success"
               sx={{ borderRadius: "2rem" }}
+<<<<<<< HEAD
+              onClick={handleTeamSubmit}
+            > 
+=======
             >
+>>>>>>> f6dc527883f2dd964b70e9d0b64c0c9ae7b9800c
               Submit
             </Button>
           </form>

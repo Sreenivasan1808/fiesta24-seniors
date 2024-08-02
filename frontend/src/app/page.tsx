@@ -99,7 +99,7 @@ export default function Home() {
             </motion.p>
             <motion.div
               className="flex justify-start mt-8"
-              initial={{ scale: 0.8, opacity: 0, x: -80 }}
+              initial={{ scale: 0.8, opacity: 0, x:-80 }}
               animate={{
                 scale: 1,
                 opacity: 1,

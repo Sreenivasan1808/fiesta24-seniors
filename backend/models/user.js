@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
   },
-  detail: {
-    type: mongoose.Types.ObjectId,
-    ref: "student",
-  },
   status:{
     type:String,
   },

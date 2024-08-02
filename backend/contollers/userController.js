@@ -8,7 +8,7 @@ const generatePassword = require("generate-password");
 const eventModel = require("../models/events");
 const jwt = require('jsonwebtoken');
 const { verifyRefreshToken, generateTokens } = require('../utils/jwtUtils');
-
+const axios=require("axios")
 // Refresh Token Endpoint
 const refreshToken = (req, res) => {
   const { refreshToken } = req.body;
@@ -28,35 +28,33 @@ const refreshToken = (req, res) => {
 
 const Register = async (req, res) => {
   try {
-    console.log("Request body:", req.body);
-    const studData = await studentModel.findOne({ Rollno: req.body.Rollno });
+    
+    const studData =(await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${req.body.RollNo}`)).data;
+    console.log(studData)
     if (studData == null) {
       return res.status(205).json("No such student available");
     }
 
     const data = await userModel.findOne({ Rollno: req.body.Rollno });
-    console.log("User data found:", data);
+    
     if (data != null) {
       return res.status(201).json({ message: "User already exists" });
     }
 
     const encrypted_password = encrypt(req.body.password);
-    console.log("Encrypted password:", encrypted_password);
-
     
     const newUser = new userModel({
       Rollno: req.body.Rollno,
       password: encrypted_password.content,
       role: "participant",
-      detail: studData._id,
       status: "pending",
       events: [],
     });
 
-    console.log("New user object:", newUser);
+    
 
     const s = await newUser.save();
-    console.log("Saved user:", s);
+    
     if (s) {
       return res.status(200).json({
         message: "Registered Successfully",
@@ -80,16 +78,14 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
-    console.log("hi")
+   
     const encrypted_password = encrypt(req.body.password);
     const data = await userModel.findOne({
       Rollno: req.body.Rollno,
       password: encrypted_password.content,
       status: "approved",
     });
-    // console.log(req.body);
-    // console.log(data);
-    // console.log("Ulle")
+    
     if (data == null) {
       return res.status(401).json("Invalid rollno or password or not approved");
     }
@@ -110,9 +106,9 @@ const Login = async (req, res) => {
 const forgetPassword = async (req, res) => {
   try {
     const rollno = req.body.Rollno;
-    const available1 = await userModel.findOne({ Rollno: rollno });
+    const available1 = await userModel.findOne({ Rollno: rollno,role:"participant" });
     if (available1 != null) {
-      const data = await studentModel.findOne({ Rollno: rollno });
+      const data = (await axios.get(`https://erp.mepcoeng.ac.in/StudentService.svc/getstudent/${rollno}`)).data
       const randomPassword = generatePassword.generate({
         length: 8,
         numbers: true,
@@ -121,13 +117,13 @@ const forgetPassword = async (req, res) => {
         lowercase: true,
         excludeSimilarCharacters: true,
       });
-      console.log(randomPassword);
+      
       const encrypted_password = encrypt(randomPassword);
       const update = await userModel.updateOne(
         { Rollno: rollno },
         { $set: { password: encrypted_password.content } }
       );
-      send_mail(data.mail, `Your password has been reset to ${randomPassword}`);
+      send_mail(data.Email, `Your password has been reset to ${randomPassword}`);
       return res.status(200).json("Success");
     } else {
       return res.status(404).json("No data found");
@@ -146,9 +142,7 @@ const changePassword = async (req, res) => {
       Rollno: req.user.Rollno,
       password: current_encrypted.content,
     });
-    console.log(req.user.Rollno)
-    console.log(data)
-    console.log(current_encrypted)
+    
     if (data == null) {
       return res.status(404).json("Invalid rollno or password");
     } else {
@@ -167,59 +161,65 @@ const changePassword = async (req, res) => {
 };
 const registerSoloevent = async (req, res) => {
   try {
-    let data
-    if(req.user.role=="participant")
-    {
-      data = await userModel.findOne({ Rollno: req.user.Rollno });
+    const currentDate= new Date()
+    const endDate= new Date("2024-08-14")
+    if(currentDate>endDate){
+    res.status(204).json("Register Timed Out")
+    return
     }
-    else
-    {
-      data = await userModel.findOne({ Rollno: req.body.Rollno });
-    }
-    console.log(data);
-    const registeringEvent = req.body.eventName;
-    const events1 = data.events;
-    let flag = 1;
-    console.log(flag);
-    const eventTime = await eventModel.findOne({
-      eventName: req.body.eventName,
-    });
-    for (let i = 0; i < events1.length; i++) {
-      const events = await eventModel.findOne({ eventName: events1[i] });
-      console.log(`time:${eventTime}`);
-      const existingeventstart = new Date(events.startTime);
-      const existingeventend = new Date(events.endTime);
-      const neweventstart = new Date(eventTime.startTime);
-      const neweventend = new Date(eventTime.endTime);
-      if (
-        neweventstart.getTime() == existingeventstart.getTime() ||
-        (neweventstart.getTime() > existingeventstart.getTime() &&
-          neweventstart.getTime() < existingeventend.getTime()) ||
-        (neweventend.getTime() > existingeventstart.getTime() &&
-          neweventend.getTime() <= existingeventend.getTime()) ||
-        (existingeventstart > neweventstart &&
-          existingeventstart < neweventend) ||
-        (existingeventend > neweventstart && existingeventend <= neweventend)
-      ) {
-        flag = 0;
-        break;
+      let data
+      if(req.user.role=="participant")
+      {
+        data = await userModel.findOne({ Rollno: req.user.Rollno });
       }
-    }
-    if (flag == 0) {
-      console.log(flag);
-      res.status(204).json("cannot participate");
-    } else {
-      const newsoloevent = new soloeventModel({
-        Rollno: data.Rollno,
-        EventName: registeringEvent,
+      else
+      {
+        data = await userModel.findOne({ Rollno: req.body.Rollno });
+      }
+      
+      const registeringEvent = req.body.eventName;
+      const events1 = data.events;
+      let flag = 1;
+      
+      const eventTime = await eventModel.findOne({
+        eventName: req.body.eventName,
       });
-      const s = await newsoloevent.save();
-      const data1 = await userModel.updateOne(
-        { Rollno: data.Rollno },
-        { $push: { events: registeringEvent } }
-      );
-      res.status(200).json("can participate");
-    }
+      for (let i = 0; i < events1.length; i++) {
+        const events = await eventModel.findOne({ eventName: events1[i] });
+        
+        const existingeventstart = new Date(events.startTime);
+        const existingeventend = new Date(events.endTime);
+        const neweventstart = new Date(eventTime.startTime);
+        const neweventend = new Date(eventTime.endTime);
+        if (
+          neweventstart.getTime() == existingeventstart.getTime() ||
+          (neweventstart.getTime() > existingeventstart.getTime() &&
+            neweventstart.getTime() < existingeventend.getTime()) ||
+          (neweventend.getTime() > existingeventstart.getTime() &&
+            neweventend.getTime() <= existingeventend.getTime()) ||
+          (existingeventstart > neweventstart &&
+            existingeventstart < neweventend) ||
+          (existingeventend > neweventstart && existingeventend <= neweventend)
+        ) {
+          flag = 0;
+          break;
+        }
+      }
+      if (flag == 0) {
+        
+        res.status(204).json("cannot participate");
+      } else {
+        const newsoloevent = new soloeventModel({
+          Rollno: data.Rollno,
+          EventName: registeringEvent,
+        });
+        const s = await newsoloevent.save();
+        const data1 = await userModel.updateOne(
+          { Rollno: data.Rollno },
+          { $push: { events: registeringEvent } }
+        );
+        res.status(200).json("can participate");
+      }
   } catch (error) {
     console.log(error);
   }
@@ -227,9 +227,9 @@ const registerSoloevent = async (req, res) => {
 const isEventRegistered = async (req, res) => {
   const data = await userModel.findOne({ Rollno: req.user.Rollno });
   const events = data.events;
-  console.log(events)
+  
   if (events.includes(req.query.eventName)) {
-    console.log("hi");
+    
     res.status(200).json("already registered");
   } else {
     res.status(201).json("didn't registered");
@@ -237,6 +237,12 @@ const isEventRegistered = async (req, res) => {
 };
 const registergroupevent = async (req, res) => {
   try {
+    const currentDate= new Date()
+    const endDate= new Date("2024-08-14")
+    if(currentDate>endDate){
+    res.status(204).json("Register Timed Out")
+    return
+    }
     let flag = 1;
     const members = req.body.teamMembers;
     for(let i=0;i<members.length;i++)
@@ -247,35 +253,34 @@ const registergroupevent = async (req, res) => {
           continue
         }
         if(members[j]==members[i]){
-          console.log("hello  ")
+          
           res.status(206).json("team members repeated")
           return
         }
       }
     }
     const registeringEvent = req.body.eventName;
-    console.log(registeringEvent);
-    console.log(`length:${members.length}`)
+    
     for (let i = 0; i < members.length; i++) {
       if(members[i]==null){
         continue
       }
       const data = await userModel.findOne({ Rollno: members[i] });
-      //console.log(data)
+      
       if(data==null)
       {
         res.status(205).json("student not found")
       }
-      //console.log(`data:${data.events}`)
+      
       
       const events1 = data.events;
-      console.log(flag);
+    
       const eventTime = await eventModel.findOne({
         eventName: registeringEvent,
       });
       for (let i = 0; i < events1.length; i++) {
         const events = await eventModel.findOne({ eventName: events1[i] });
-        console.log(`time:${eventTime}`);
+        
         const existingeventstart = new Date(events.startTime);
         const existingeventend = new Date(events.endTime);
         const neweventstart = new Date(eventTime.startTime);
@@ -296,7 +301,7 @@ const registergroupevent = async (req, res) => {
       }
     }
     if (flag == 0) {
-      console.log("hi");
+      
       res.status(204).json({ message: "cannot participate" });
     } else {
       const newgroupevent = new groupeventModel({
@@ -328,7 +333,7 @@ const myevents = async(req,res) => {
   }
   if(events)
   {
-    console.log(events)
+    
     res.status(200).json(events)
   }
   else
