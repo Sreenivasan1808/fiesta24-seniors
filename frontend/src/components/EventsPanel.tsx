@@ -14,7 +14,7 @@ const EventsPanel = () => {
         >
           {eventsJson.map((event) => {
             if (event.eventType == "Solo")
-              return <EventsCard eventName={event.eventName} />;
+              return <EventsCard key={event.eventName} eventName={event.eventName} />;
           })}
         </div>
       </div>
